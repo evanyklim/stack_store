@@ -22,11 +22,16 @@ Refer to the q documentation for why and how q.invoke is used.
 var mongoose = require('mongoose');
 var connectToDb = require('./server/db');
 var User = mongoose.model('User');
+var Product = mongoose.model('Product');
 var q = require('q');
 var chalk = require('chalk');
 
 var getCurrentUserData = function () {
     return q.ninvoke(User, 'find', {});
+};
+
+var getCurrentProduct = function () {
+    return q.ninvoke(Product, 'find', {});
 };
 
 var seedUsers = function () {
@@ -46,6 +51,24 @@ var seedUsers = function () {
 
 };
 
+var seedProducts = function () {
+
+    var products = [
+        {
+            name: 'Jordans',
+            description: 'awesome'
+        },
+        {
+            name: 'obama@gmail.com',
+            description: 'potus'
+        }
+    ];
+
+    return q.invoke(Product, 'create', products);
+
+};
+
+
 connectToDb.then(function () {
     getCurrentUserData().then(function (users) {
         if (users.length === 0) {
@@ -60,5 +83,9 @@ connectToDb.then(function () {
     }).catch(function (err) {
         console.error(err);
         process.kill(1);
+    });
+
+    getCurrentProduct().then(function (products) {
+        return seedProducts();
     });
 });
