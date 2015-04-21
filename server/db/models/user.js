@@ -1,8 +1,10 @@
 'use strict';
 var crypto = require('crypto');
 var mongoose = require('mongoose');
+//var Cart = require('./cart.js');
+var Schema = mongoose.Schema;
 
-var schema = new mongoose.Schema({
+var userSchema = new Schema({
     email: {
         type: String
     },
@@ -23,7 +25,14 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
-    }
+    },
+    cart: { 
+       type: Schema.Types.ObjectId, ref: 'Cart'
+   },
+   //  orders: [{
+   //     type: Schema.Types.ObjectId, ref: 'Orders'  
+   // }],
+    authenticated: {}
 });
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
@@ -39,7 +48,7 @@ var encryptPassword = function (plainText, salt) {
     return hash.digest('hex');
 };
 
-schema.pre('save', function (next) {
+userSchema.pre('save', function (next) {
 
     if (this.isModified('password')) {
         this.salt = this.constructor.generateSalt();
@@ -50,11 +59,11 @@ schema.pre('save', function (next) {
 
 });
 
-schema.statics.generateSalt = generateSalt;
-schema.statics.encryptPassword = encryptPassword;
+userSchema.statics.generateSalt = generateSalt;
+userSchema.statics.encryptPassword = encryptPassword;
 
-schema.method('correctPassword', function (candidatePassword) {
+userSchema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
 
-mongoose.model('User', schema);
+mongoose.model('User', userSchema);

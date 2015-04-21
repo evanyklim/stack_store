@@ -23,6 +23,7 @@ var mongoose = require('mongoose');
 var connectToDb = require('./server/db');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product');
+var Cart = mongoose.model('Cart');
 var q = require('q');
 var chalk = require('chalk');
 
@@ -32,6 +33,10 @@ var getCurrentUserData = function () {
 
 var getCurrentProduct = function () {
     return q.ninvoke(Product, 'find', {});
+};
+
+var getCurrentCart = function() {
+    return q.ninvoke(Cart, 'find', {});
 };
 
 var seedUsers = function () {
@@ -68,6 +73,18 @@ var seedProducts = function () {
 
 };
 
+var seedCart = function () {
+
+    var cart = {
+            user: {
+                    name: 'Anirban',
+                    description: 'Evan'
+                   },
+    };
+
+    return q.invoke(Cart, 'create', carts);
+
+};
 
 connectToDb.then(function () {
     getCurrentUserData().then(function (users) {
@@ -88,4 +105,9 @@ connectToDb.then(function () {
     getCurrentProduct().then(function (products) {
         return seedProducts();
     });
+
+    getCurrentCart().then(function (carts) {
+        return seedCart();
+    })
+
 });
