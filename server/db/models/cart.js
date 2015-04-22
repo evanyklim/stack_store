@@ -6,8 +6,8 @@ var Schema = mongoose.Schema;
 
 var cartSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    items: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
-    orderDate: {type: Date, required: true, default: Date.now}
+    items: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
+    // orderDate: {type: Date, required: true, default: Date.now}
     //ordered: {type: boolean, default: false}
 });
 
