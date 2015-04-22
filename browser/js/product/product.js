@@ -1,59 +1,44 @@
 
-	
-	var app = angular.module('store', []);
 
-	//Cotnrollers are where we define our app's behavior
-	//by defining functions and values
-	app.controller('StoreController', function ($scope) {
-		$scope.products = gems;
-	});
+var app = angular.module('Product', []);
 
-	app.controller("PanelController", function(){
-		this.tab = 1;
+app.controller("ProductController", function ($scope){
+	$scope.product = shoes[0];
 
-		this.selectTab = function(setTab) {
-			this.tab = setTab;
-		};
+});
 
-		this.isSelected = function(checkTab) {
-			return this.tab === checkTab;
-		};
-	});
+app.controller("PanelController", function ($scope) {
+	$scope.tab = 1;
 
-	app.controller("ReviewController", function() {
-		this.review = {};
+	$scope.selectedTab = function(setTab) {
+		$scope.tab = setTab;
+	};
 
-		this.addReview = function(product) {
-			product.reviews.push(this.review);
-			this.review = {};
-		};
-	});
+	$scope.isSelected = function(checkTab) {
+		return $scope.tab === checkTab;
+	};
 
-	var gems = 
-		[{
-			name: 'Dodecahedron',
-			price: 2.95,
-			description: '. . .',
-			canPurchase: true,
-			soldOut: false,
-			//images: [{ full: false, thumb: false }]
-			reviews: [
-				{
-					stars: 5,
-					body: "Great product!",
-					author: "cl@gmail.com"
-				},
-				{
-					stars: 1,
-					body: "Poor service",
-					author: "adf@gmail.com"
-				}]
-		},
-		{
-			name: 'Emerald',
-			price: 212.95,
-			description: '. . .',
-			canPurchase: true,
-			soldOut: false
-		}];
+});
 
+app.controller("ReviewController", function ($scope) {
+	$scope.review = {};
+
+	$scope.addReview = function(product) {
+		product.reviews.push($scope.review);
+		$scope.review = {};
+	};
+});
+
+
+
+
+var shoes = [
+	{
+		name: 'Nike Air Jordan XI "45" Sample',
+		availability: "True",
+		image: "http://images.complex.com/complex/image/upload/t_article_image/xzw3tp7k39lld4h2eu23.jpg",
+		description: 'Michael Jordan wore this sneakers in the early 1990s. Of all the samples of Air Jordans, the "45" XIs remain the most coveted' ,
+		category: "Jordans",
+		price: 500.00,
+		Reviews: ["These are the best shoes EVERRRR! 5/5 Stars!", "Not the best. Look somewhere else. 1/5 stars."]
+	}];
