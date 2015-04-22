@@ -64,8 +64,8 @@ var seedProducts = function () {
             description: 'awesome'
         },
         {
-            name: 'obama@gmail.com',
-            description: 'potus'
+            name: 'Nike SB',
+            description: 'swag'
         }
     ];
 
@@ -76,13 +76,17 @@ var seedProducts = function () {
 var seedCart = function () {
 
     var cart = {
-            user: {
-                    name: 'Anirban',
-                    description: 'Evan'
-                   },
+            user: new User({
+                    email: 'Anirban',
+                    password: 'Evan'
+                   }),
+            items: [new Product({
+                name: "Nike SB",
+                image: "someURL"
+            })]
     };
 
-    return q.invoke(Cart, 'create', carts);
+    return q.invoke(Cart, 'create', cart);
 
 };
 

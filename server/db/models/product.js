@@ -14,4 +14,4 @@ var productSchema = new Schema({
 			    body: { type: String, max: 300 }, score: { type: Number, min: 1, max: 5} }]
 });
 
-mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Product', productSchema);
