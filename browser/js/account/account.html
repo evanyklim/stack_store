@@ -1,8 +1,9 @@
-<form id="account-form" name="accountForm" ng-controller="AccountController">
+<form id="account-form" name="accountForm">
     <!-- ng-submit="loginForm.$valid && sendLogin(login)" -->
     <p>This is the account page. It will contain fields for the authenticated user to update their profile</p>
 
-    <div ng-repeat="data in userInfo">{{data}}</div>
+    <!-- <div ng-repeat="data in userInfo">{{data}}</div> -->
+    <div>{{userInfo}}</div>
    <!--  <div class="alert alert-danger" ng-show="error">
         <span class="glyphicon glyphicon-exclamation-sign"></span>
         <span class="sr-only">Error:</span>
