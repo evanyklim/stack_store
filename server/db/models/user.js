@@ -29,9 +29,9 @@ var userSchema = new Schema({
     cart: { 
        type: Schema.Types.ObjectId, ref: 'Cart'
    },
-   //  orders: [{
-   //     type: Schema.Types.ObjectId, ref: 'Orders'  
-   // }],
+    orders: [{
+       type: Schema.Types.ObjectId, ref: 'Order'  
+   }],
     authenticated: {}
 });
 

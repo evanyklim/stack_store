@@ -13,7 +13,7 @@ app.config(function ($stateProvider) {
 app.controller('ProductsController', function ($scope, ProductFactory) {
 
 	ProductFactory.getShoes().then(function (shoes) {
-		$scope.shoes = shoes.data;
+		$scope.shoes = shoes;
 	});
 
 });
