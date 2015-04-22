@@ -5,7 +5,6 @@ var Schema = mongoose.Schema;
 var productSchema = new Schema({
 	name: String,
 	availability: Boolean, //in or out of stock
-	productID: Number, //internal catalogue number
 	image: String,
 	description: String,
 	category: String, //for organizational purposes
