@@ -8,7 +8,7 @@ var productsDb = [
 		price: 500.00,
 		Reviews: ""
 	},
-	}
+	{
 		name: 'UNDFTD Air Jordan IV',
 		availability: "True", 
 		image: "http://images.complex.com/complex/image/upload/t_article_image/g8uze0snsfohrxox9tia.jpg",
@@ -16,8 +16,8 @@ var productsDb = [
 		category: "Jordans", 
 		price: 30000.00,
 		Reviews: ""
-	{,
-	}
+	},
+	{
 		name: 'Nike Air Jordan 1 "Black/Red"',
 		availability: "True", 
 		image: "http://images.complex.com/complex/image/upload/t_article_image/qswznb5yoxnib1kazng2.jpg",
@@ -25,8 +25,8 @@ var productsDb = [
 		category: "Jordans", 
 		price: 300.00,
 		Reviews: ""
-	{,
-	}
+	},
+	{
 		name: 'Nike Air Jordan 1 Low',
 		availability: "True", 
 		image: "http://images.complex.com/complex/image/upload/t_article_image/oo7rlvxsmmljne4p4vs8.jpg",
@@ -34,14 +34,14 @@ var productsDb = [
 		category: "Jordans", 
 		price: 100.00,
 		Reviews: ""
-	{,
-	}
+	},
+	{
 		name: 'Nike Air Jordan III',
 		availability: "True", 
 		image: "http://images.complex.com/complex/image/upload/t_article_image/e7pwo50ehkketqaxsx4g.jpg",
 		description: 'Aside from the 1, there might not be another Air Jordan more important to the line than the Air Jordan III. The story has been told all too often-how a former architect named Tinker Hatfield took over the line, and used his architecture training to come up with an entirely new way to approach signature product. ' ,
 		category: "Jordans", 
-		price: 12x0.00,
+		price: 120.00,
 		Reviews: ""
-	{,
+	},
 ]
