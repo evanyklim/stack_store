@@ -8,7 +8,7 @@ var productSchema = new Schema({
 	image: String,
 	description: String,
 	category: String, //for organizational purposes
-	price: { type: Number, min: 4 },
+	price: { type: Number, min: 1 },
 	Reviews: [{ title: { type: String, max: 100}, date: { type: Date, default: Date.now }, 
 			    body: { type: String, max: 300 }, score: { type: Number, min: 1, max: 5} }]
 });
