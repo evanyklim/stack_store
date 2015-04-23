@@ -15,9 +15,11 @@ app.controller('CartController', function ($scope, CartFactory) {
 	// });
   $scope.cart = "this is your cart :)";
 
-  $scope.post = function(payload){
+  $scope.post = function(item){
+    // post request will only work with JSON payload
+    var payload = { items: item };
     CartFactory.postCart(payload).then(function(cart){
-      console.log(cart);
+      //console.log(cart);
       // $scope.cart.items.push(cart);
       $scope.cart = cart;
     });
