@@ -13,10 +13,27 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller("ProductCtrl", function ($scope){
-	$scope.product = shoes[0];
+app.controller("ProductCtrl", function ($scope, ProductFactory){
+	ProductFactory.getShoes().then(function (shoes) {
+		$scope.products = shoes;
+	});
+});
+
+app.factory('ProductFactory', function ($http) {
+
+    var getShoes = function () {
+            return $http.get('/api/products/shoes').then(function (response) {
+            return response.data;
+        });
+    };
+
+    return {
+        getShoes: getShoes
+    };
 
 });
+
+
 
 app.controller("PanelController", function ($scope) {
 	$scope.tab = 1;
