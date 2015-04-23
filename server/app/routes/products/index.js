@@ -6,14 +6,10 @@ var _ = require('lodash');
 var Product = mongoose.model("Product");
 
 router.get('/shoes', function (req, res) {
-	console.log("REQUEST", req.body);
-	
- 
 
-
- 	Product.find({}, function (err, shoes){
- 		console.log("shoes : ", shoes)
- 		res.send(shoes);
- 	});
+	Product.find({}, function(err, products){
+		console.log(products);		
+		res.send(products);
+	});
 
 });

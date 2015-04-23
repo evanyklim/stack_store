@@ -8,6 +8,8 @@ var orderSchema = new Schema({
     orderDate: { type: Date, required: true, default: Date.now }
 });
 
+orderSchema.methods.totalPrice = function totalPrice (cb) {
+	// return this.model('Cart').find({}, cb);
+};
 
-//NEED METHOD TO CALCULATE TOTAL PRICE USING CART SCHEMA
 mongoose.model('Order', orderSchema);
