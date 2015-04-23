@@ -11,7 +11,7 @@ router.get('/shoes', function (req, res) {
  
 
 
- 	Product.find({category: {name: }}, function (err, shoes){
+ 	Product.find({}, function (err, shoes){
  		console.log("shoes : ", shoes)
  		res.send(shoes);
  	});
