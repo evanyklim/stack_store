@@ -5,11 +5,23 @@
 				<h1>{{ product.name }}</h1>
 				<img ng-src="{{ product.image }}" width="500px" alt="shoe"/>
 			</div>
-			<div class="col-md-6" style="padding-top: 100px">
-				<p class="lead">{{ product.price | currency }}<p>
-				<p class="lead">{{ product.category }}</p>
-				<p class="lead">{{ product.description }}</p>
-				<button class="btn btn-success"> Add to Cart </button>
+			<div class="col-md-6">
+				<div class="text-right">
+				<style>
+				#xBtn {
+					border-radius: 25px;
+					margin-right: 30px;
+				}
+
+				</style>
+				<button id="xBtn" class="btn btn-warning btn-lg" ng-click="showInfo()">X</button>
+				</div>
+				<div style="padding-top: 100px">
+					<p class="lead">{{ product.price | currency }}<p>
+					<p class="lead">{{ product.category }}</p>
+					<p class="lead">{{ product.description }}</p>
+					<button class="btn btn-success"> Add to Cart </button>
+				</div>
 <!-- 				<h4 ng-show="!product.availability" style="color: red"> Out of Stock </h4> -->
 			</div>
 		</div>

@@ -19,7 +19,7 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory) {
 	});
 
     $scope.showInfo = function() {
-                $scope.learnMore = true;
+                $scope.learnMore = !$scope.learnMore;
             }
 
 });
