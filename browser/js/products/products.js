@@ -4,13 +4,13 @@ app.config(function ($stateProvider) {
     // Register our *about* state.
     $stateProvider.state('products', {
         url: '/products',
-        controller: 'ProductsController',
+        controller: 'ProductsCtrl',
         templateUrl: 'js/products/products.html'
     });
 
 });
 
-app.controller('ProductsController', function ($scope, ProductFactory) {
+app.controller('ProductsCtrl', function ($scope, ProductFactory) {
 
 	ProductFactory.getShoes().then(function (shoes) {
 		$scope.products = shoes;
