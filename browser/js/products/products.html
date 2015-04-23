@@ -1,17 +1,22 @@
-<section id="products" ng-controller="ProductsCtrl" class="container well" ng-repeat="product in products">
+<section id="products" ng-show="!learnMore" ng-controller="ProductsCtrl" class="container well" ng-repeat="product in products">
 		<div class="row">
 			<div class="col-md-3 text-center">
 				<img ng-src="{{ product.image }}" width="200px" alt="shoe"/>
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 50px">
-				<h4>{{ product.name }}</h1>
+				<h4>{{ product.name }}</h4>
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 55px">
 				<p class="lead">{{ product.price | currency }}<p>
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 50px">
 				<button class="btn btn-success"> Add to Cart </button>
-				<button class="btn btn-info"> Learn More </button>
+				<button ng-click="showInfo()" class="btn btn-info"> Learn More </button>
 			</div>
+		</div>
+		<product-info ng-show="!learnMore"></product-info>
 
 </section>
+
+
+

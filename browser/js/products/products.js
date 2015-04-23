@@ -6,15 +6,21 @@ app.config(function ($stateProvider) {
         url: '/products',
         controller: 'ProductsCtrl',
         templateUrl: 'js/products/products.html'
+
     });
 
 });
 
 app.controller('ProductsCtrl', function ($scope, ProductFactory) {
+    $scope.learnMore = false;
 
 	ProductFactory.getShoes().then(function (shoes) {
 		$scope.products = shoes;
 	});
+
+    $scope.showInfo = function() {
+                $scope.learnMore = true;
+            }
 
 });
 
