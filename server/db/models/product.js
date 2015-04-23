@@ -21,9 +21,9 @@ var productSchema = new Schema({
 	name: String,
 	image: String,
 	description: String,
-	category: categorySchema,
+	category: [categorySchema],
 	price: { type: Number },
-	Reviews: [reviewSchema]
+	reviews: [reviewSchema]
 });
 
 module.exports = mongoose.model('Product', productSchema);
