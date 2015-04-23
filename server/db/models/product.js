@@ -2,15 +2,30 @@
 var mongoose = require('mongoose'); 
 var Schema = mongoose.Schema;
 
+
+var categorySchema = new Schema({
+	name: String
+});
+
+
+var reviewSchema = new Schema({
+	 user: { type: Schema.Types.ObjectId, ref: 'User' },
+	 title: String,
+	 date: { type: Date, default: Date.now },
+	 body: String,
+	 score: Number
+});
+
+
 var productSchema = new Schema({
 	name: String,
-	availability: Boolean, //in or out of stock
 	image: String,
 	description: String,
-	category: String, //for organizational purposes
-	price: { type: Number, min: 1 },
-	Reviews: [{ title: { type: String, max: 100}, date: { type: Date, default: Date.now }, 
-			    body: { type: String, max: 300 }, score: { type: Number, min: 1, max: 5} }]
+	category: categorySchema,
+	price: { type: Number },
+	Reviews: [reviewSchema]
 });
 
 module.exports = mongoose.model('Product', productSchema);
+
+//product --> cart.items 
