@@ -32,7 +32,6 @@ var userSchema = new Schema({
     orders: [{
        type: Schema.Types.ObjectId, ref: 'Order'  
    }],
-    authenticated: {}
 });
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
