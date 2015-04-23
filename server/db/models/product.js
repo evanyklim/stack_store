@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 
 var productSchema = new Schema({
 	name: String,
-	availability: Boolean, //in or out of stock
 	image: String,
 	description: String,
 	category: String, //for organizational purposes
