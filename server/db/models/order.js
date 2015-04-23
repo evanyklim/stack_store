@@ -5,7 +5,9 @@ var Schema = mongoose.Schema;
 var orderSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     cart: { type: Schema.Types.ObjectId, ref: 'Cart' },
-    orderDate: { type: Date, required: true, default: Date.now }
+    // change to items: [Product] or the like
+    orderDate: { type: Date, required: true, default: Date.now },
+    orderStatus: String
 });
 
 orderSchema.methods.totalPrice = function totalPrice (cb) {

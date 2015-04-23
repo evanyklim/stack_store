@@ -7,6 +7,7 @@ var reviewSchema = new Schema({
 	 title: String,
 	 date: { type: Date, default: Date.now },
 	 body: String,
+	 product: { type: Schema.Types.ObjectId, ref: 'Product' },
 	 score: Number
 });
 
