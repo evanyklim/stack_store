@@ -1,40 +1,36 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose');
-module.exports = router;
 var _ = require('lodash');
 var Cart = mongoose.model("Cart");
-// var cartModel = require('./db/models/cartModel');
+module.exports = router;
 
 router.get('/CartItems', function (req, res) {
 	console.log("REQUEST", req.body);
  
-
  	Cart.find({}, function(err, items){
- 		console.log("items : ", items)
+ 		console.log("items : ", items);
  		res.send(items);
  	});
-
 });
-
 
 router.delete('/CartItems', function (req, res){
 	var user = req.body.user;
-	var deletedItem = req.body.deletedItem
+	var deletedItem = req.body.deletedItem;
 	Cart.remove({items: deletedItem}, function(err, item){
-		console.log("Deleted from cart: ", item)
-	})
+		console.log("Deleted from cart: ", item);
+	});
 });
 
-
-
 router.post('/CartItems', function(req, res){
-	var user = req.body.user;
-	var addedItem = req.body.addedItem;
-	Cart.create({items: addedItem}, function(err, item){
-		Cart.save();
-	})
-})
+	// var user = req.body.user;
+	// var addedItem = req.body.addedItem;
+	console.log(req.body);
+	res.send('post request complete!');
+	// Cart.create({items: addedItem}, function(err, item){
+	// 	Cart.save();
+	// });
+});
 
 
 

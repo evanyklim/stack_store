@@ -21,97 +21,76 @@ Refer to the q documentation for why and how q.invoke is used.
 
 var mongoose = require('mongoose');
 var connectToDb = require('./server/db');
+var q = require('q');
+var chalk = require('chalk');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product');
 var Cart = mongoose.model('Cart');
-var q = require('q');
-var chalk = require('chalk');
+var Order = mongoose.model('Order');
+
+var productsDB = require('./productsDb.js');
 
 var getCurrentUserData = function () {
-    return q.ninvoke(User, 'find', {});
+  return q.ninvoke(User, 'find', {});
 };
 
 var getCurrentProduct = function () {
-    return q.ninvoke(Product, 'find', {});
+  return q.ninvoke(Product, 'find', {});
 };
 
 var getCurrentCart = function() {
-    return q.ninvoke(Cart, 'find', {});
+  return q.ninvoke(Cart, 'find', {});
 };
 
 var seedUsers = function () {
-
-    var users = [
-        {
-            email: 'testing@fsa.com',
-            password: 'password'
-        },
-        {
-            email: 'obama@gmail.com',
-            password: 'potus'
-        }
-    ];
-
-    return q.invoke(User, 'create', users);
-
+  var users = [
+    { email: 'testing@fsa.com', password: 'password' },
+    { email: 'obama@gmail.com', password: 'potus' }
+  ];
+  return q.invoke(User, 'create', users);
 };
 
 var seedProducts = function () {
-
-    var products = [
-        {
-            name: 'Jordans',
-            description: 'awesome'
-        },
-        {
-            name: 'Nike SB',
-            description: 'swag'
-        }
-    ];
-
-    return q.invoke(Product, 'create', products);
-
+  var products = productsDB;
+  return q.invoke(Product, 'create', products);
 };
 
 var seedCart = function () {
-
-    var cart = {
-            user: new User({
-                    email: 'Anirban',
-                    password: 'Evan'
-                   }),
-            items: [new Product({
-                name: "Nike SB",
-                image: "someURL"
-            })]
-    };
-
-    return q.invoke(Cart, 'create', cart);
-
+  var cart = {
+    user: new User({
+      email: 'Anirban',
+      password: 'Evan'
+    }),
+    items: [ new Product({
+      name: "Nike SB",
+      image: "someURL"
+    })]
+  };
+  return q.invoke(Cart, 'create', cart);
 };
 
 connectToDb.then(function () {
-    getCurrentUserData().then(function (users) {
-        if (users.length === 0) {
-            return seedUsers();
-        } else {
-            console.log(chalk.magenta('Seems to already be user data, exiting!'));
-            process.kill(0);
-        }
-    }).then(function () {
-        console.log(chalk.green('Seed successful!'));
-        process.kill(0);
-    }).catch(function (err) {
-        console.error(err);
-        process.kill(1);
-    });
+  getCurrentUserData().then(function (users) {
+    if (users.length === 0) {
+      return seedUsers();
+    } else {
+      console.log(chalk.magenta('Seems to already be user data, exiting!'));
+      process.kill(0);
+    }
+  }).then(function () {
+    console.log(chalk.green('Seed successful!'));
+    process.kill(0);
+  }).catch(function (err) {
+    console.error(err);
+    process.kill(1);
+  });
 
-    getCurrentProduct().then(function (products) {
-        return seedProducts();
-    });
+  getCurrentProduct().then(function (products) {
+    return seedProducts();
+  });
 
-    getCurrentCart().then(function (carts) {
-        return seedCart();
-    })
+  getCurrentCart().then(function (carts) {
+    return seedCart();
+  })
 
 });
