@@ -26,9 +26,6 @@ var userSchema = new Schema({
     google: {
         id: String
     },
-    cart: { 
-       type: Schema.Types.ObjectId, ref: 'Cart'
-   },
     orders: [{
        type: Schema.Types.ObjectId, ref: 'Order'  
    }],

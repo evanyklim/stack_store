@@ -11,19 +11,17 @@ app.config(function ($stateProvider) {
 app.controller('AccountController', function ($scope, AccountFactory) {
 
 	AccountFactory.getUserInfo().then(function (userInfo) {
+		console.log(userInfo);
 		$scope.userInfo = userInfo;
 	});
 
 });
 
-app.factory('AccountFactory', function ($http, Session) {
+app.factory('AccountFactory', function ($http) {
 
 	var getUserInfo = function () {
-		var session = {
-			data: Session.user
-		};
-		// is a post request ideal here?
-		return $http.post('/api/account/userinfo', session).then(function (response) {
+
+		return $http.get('/api/account/userinfo').then(function (response) {
 			return response.data;
 		});
 	};
