@@ -22,7 +22,7 @@ app.factory('AccountFactory', function ($http, Session) {
 		var session = {
 			data: Session.user
 		};
-
+		// is a post request ideal here?
 		return $http.post('/api/account/userinfo', session).then(function (response) {
 			return response.data;
 		});

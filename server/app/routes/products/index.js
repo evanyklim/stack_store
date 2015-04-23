@@ -10,7 +10,7 @@ router.get('/shoes', function (req, res) {
  
 
  	Product.find({}, function(err, shoes){
- 		console.log("shoes : ", shoes)
+ 		console.log("shoes : ", shoes);
  		res.send(shoes);
  	});
 

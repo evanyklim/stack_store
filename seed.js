@@ -27,6 +27,8 @@ var Cart = mongoose.model('Cart');
 var q = require('q');
 var chalk = require('chalk');
 
+var productsDB = require('./productsDb.js');
+
 var getCurrentUserData = function () {
     return q.ninvoke(User, 'find', {});
 };
@@ -58,16 +60,17 @@ var seedUsers = function () {
 
 var seedProducts = function () {
 
-    var products = [
-        {
-            name: 'Jordans',
-            description: 'awesome'
-        },
-        {
-            name: 'Nike SB',
-            description: 'swag'
-        }
-    ];
+    // var products = [
+    //     {
+    //         name: 'Jordans',
+    //         description: 'awesome'
+    //     },
+    //     {
+    //         name: 'Nike SB',
+    //         description: 'swag'
+    //     }
+    // ];
+    var products = productsDB;
 
     return q.invoke(Product, 'create', products);
 
