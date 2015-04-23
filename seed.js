@@ -28,7 +28,7 @@ var Product = mongoose.model('Product');
 var Cart = mongoose.model('Cart');
 var Order = mongoose.model('Order');
 
-var productsDB = require('./productsDb.js');
+var DBproducts = require('./Dbproducts');
 
 var getCurrentUserData = function () {
   return q.ninvoke(User, 'find', {});
@@ -44,22 +44,23 @@ var getCurrentCart = function() {
 
 var seedUsers = function () {
   var users = [
-    { email: 'testing@fsa.com', password: 'password' },
-    { email: 'obama@gmail.com', password: 'potus' }
+    { email: 'john@smith.com', password: 'password' },
   ];
   return q.invoke(User, 'create', users);
 };
 
 var seedProducts = function () {
-  var products = productsDB;
-  return q.invoke(Product, 'create', products);
+  console.log('dbproducts: ', DBproducts)
+  return q.invoke(Product, 'create', DBproducts);
 };
 
 var seedCart = function () {
   var cart = {
     user: new User({
       email: 'Anirban',
-      password: 'Evan'
+      password: 'password',
+      cart: null,
+      orders: []
     }),
     items: [ new Product({
       name: "Nike SB",
