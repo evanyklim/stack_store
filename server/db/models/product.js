@@ -1,6 +1,7 @@
 'use strict';
 var mongoose = require('mongoose'); 
 var Schema = mongoose.Schema;
+var deepPopulate = require('mongoose-deep-populate');
 
 // var categorySchema = new Schema({
 // 	name: String
@@ -22,6 +23,8 @@ var productSchema = new Schema({
 	price: { type: Number },
 	Reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
 });
+
+productSchema.plugin(deepPopulate);
 
 mongoose.model('Product', productSchema);
 
