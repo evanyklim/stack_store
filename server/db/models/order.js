@@ -8,8 +8,41 @@ var orderSchema = new Schema({
     orderDate: { type: Date, required: true, default: Date.now }
 });
 
+// var order;
+// order.totalPrice(function (err, totalPrice) {
+// 	// do stuff with totalPrice
+// });
+
+// console.log(order.blah.then());
+
+
 orderSchema.methods.totalPrice = function totalPrice (cb) {
-	// return this.model('Cart').find({}, cb);
+	this.populate("cart").exec(function(err, order){
+			if(err) return cb(err);
+		order.cart.populate('items').exec(function(err, cart){
+			if(err) return cb(err);
+			var totalPrice;
+			for(var i = 0; i < cart.items.length; i++){
+				totalPrice += cart.items[i].price;
+			}
+
+			cb(null, totalPrice);
+		});
+	});
 };
+
+// orderSchema.virtual('totalPrice')
+// .get(function () {
+// 	return this.populate('cart').exec().then(function(order){
+// 		return order.cart.populate('items').exec()
+// 	}).then(function(cart){
+// 		var totalPrice;
+// 		for(var i = 0; i < cart.items.length; i++){
+// 			totalPrice += cart.items[i].price;
+// 		}
+
+// 		return totalPrice;
+// 	})
+// });
 
 mongoose.model('Order', orderSchema);
