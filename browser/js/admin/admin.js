@@ -6,6 +6,10 @@ app.config(function ($stateProvider) {
 		controller: 'AdminController',
 		templateUrl: 'js/admin/admin.html'
 	});
+
+	$stateProvider.state('admin.categories', {
+		
+	});
 });
 
 app.controller('AdminController', function ($scope) {
