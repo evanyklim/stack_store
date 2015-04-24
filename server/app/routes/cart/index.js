@@ -9,8 +9,13 @@ module.exports = router;
 router.get('/', function (req, res) {
 	var authUser = req.user;
  	Cart.findOne({user: authUser}).populate('items').exec(function (err, cart) {
- 		 console.log("Items in the cart: ", cart.items);
- 		res.send(cart);
+ 		cart.totalPrice(function(err, cartPrice){
+ 			var cartObject = cart.toObject();
+ 			cartObject.price = cartPrice;
+ 			console.log("Cart Price: ", cartPrice);
+ 			console.log("CART OBJECT: ", cartObject)
+ 			res.json(cartObject);
+ 		});
  	});
 });
 
@@ -26,12 +31,12 @@ router.delete('/items', function (req, res){
 
 router.post('/items', function(req, res){
 	var authUser = req.user;
+	var addedProduct = req.body;
 	Cart.findOne({user: authUser}, function(err, cart){
-		console.log("USERS CART: ", cart)
-		Product.create({name: newItem}, function(err, product){ //replace when products page has products listed
-			cart.items.push(product);
-			cart.save();
-		});
+		cart.items.push(addedProduct._id);
+		cart.save();
+		console.log(cart);
+		res.json(cart);
 	});
 });
 
