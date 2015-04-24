@@ -15,6 +15,10 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory) {
 
 	ProductFactory.getShoes().then(function (shoes) {
 		$scope.products = shoes;
+        // $scope.products.map(function(elem){
+        //     elem.Reviews = [];
+        // })
+        console.log($scope.products);
 	});
 
     $scope.showInfo = function() {
@@ -34,26 +38,4 @@ app.factory('ProductFactory', function ($http) {
         getShoes: getShoes
     };
 
-});
-
-app.controller("PanelController", function ($scope) {
-    $scope.tab = 1;
-
-    $scope.selectedTab = function(setTab) {
-        $scope.tab = setTab;
-    };
-
-    $scope.isSelected = function(checkTab) {
-        return $scope.tab === checkTab;
-    };
-
-});
-
-app.controller("ReviewController", function ($scope) {
-    $scope.review = {};
-
-    $scope.addReview = function(product) {
-        product.reviews.push($scope.review);
-        $scope.review = {};
-    };
 });
