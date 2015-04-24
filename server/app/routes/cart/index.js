@@ -26,14 +26,11 @@ router.delete('/items', function (req, res){
 
 router.post('/items', function(req, res){
 	var authUser = req.user;
-	var newItem = req.body.items;
 	Cart.findOne({user: authUser}, function(err, cart){
-			console.log("Cart before product added : ", cart)
+		console.log("USERS CART: ", cart)
 		Product.create({name: newItem}, function(err, product){ //replace when products page has products listed
-			console.log("New Product : ", product);
 			cart.items.push(product);
 			cart.save();
-			console.log("Cart Items After Product is Added :" , cart.items);
 		});
 	});
 });

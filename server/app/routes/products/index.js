@@ -13,3 +13,11 @@ router.get('/shoes', function (req, res) {
 	});
 
 });
+
+
+router.post('/shoes', function(req, res){
+		var newItem = req.body.items;
+		Product.create({name: newItem}, function(err, product){ //replace when products page has products listed
+			res.send(product);
+	});
+});

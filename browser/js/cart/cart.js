@@ -10,16 +10,16 @@ app.config(function ($stateProvider) {
 
 app.controller('CartController', function ($scope, CartFactory) {
 
-	// CartFactory.getCart().then(function (cart) {
-	// 	$scope.cart = cart;
-	// });
-  $scope.cart = "this is your cart :)";
+	CartFactory.getCart().then(function (cart) {
+    console.log(cart);
+		$scope.cart = cart;
+	});
 
   $scope.post = function(item){
     // post request will only work with JSON payload
     var payload = { items: item };
     CartFactory.postCart(payload).then(function(cart){
-      //console.log(cart);
+      // console.log(cart);
       // $scope.cart.items.push(cart);
       $scope.cart = cart;
     });
@@ -29,14 +29,14 @@ app.controller('CartController', function ($scope, CartFactory) {
 app.factory('CartFactory', function ($http) {
 
   var getCart = function () {
-    return $http.get('/api/cart/CartItems').then(function (response) {
+    return $http.get('/api/cart/').then(function (response) {
         console.log(response.data);
         return response.data;
     });
   };
 
   var postCart = function(payload){
-    return $http.post('/api/cart/CartItems', payload).then(function(response){
+    return $http.post('/api/cart/items', payload).then(function(response){
       console.log(response.data);
       return response.data;
     });
