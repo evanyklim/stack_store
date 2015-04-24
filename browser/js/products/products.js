@@ -41,3 +41,5 @@ app.factory('ProductFactory', function ($http) {
     };
 
 });
+
+// app.factory('ReviewsFactory', function )
