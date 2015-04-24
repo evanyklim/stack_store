@@ -19,7 +19,7 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory) {
         // $scope.products.map(function(elem){
         //     elem.Reviews = [];
         // })
-        //console.log($scope.products);
+        console.log($scope.products);
 	});
 
     $scope.showInfo = function() {

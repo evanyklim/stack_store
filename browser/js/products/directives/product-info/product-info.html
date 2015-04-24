@@ -54,10 +54,11 @@
 				<h4>Past Reviews</h4>
 				<p>{{ product.name }}</p>
 				<blockquote ng-repeat="review in product.Reviews">
+					<p><b>Review Title:</b> {{ review.title }}</p>
 					<b>Stars:</b> {{ review.stars }}</p>
 					<p><b>Review:</b> {{ review.body }}</p>
 					
-					<cite><p><b>by:</b> {{ review.author }}</p></cite>
+					<cite><p><b>by:</b> {{ review.user }}</p></cite>
 				</blockquote>
 
 				<form name="reviewForm" ng-controller="ReviewController" ng-submit="reviewForm.$valid && addReview(product)" nonvalidate>
@@ -65,7 +66,7 @@
 							<h3>Review</h3>
 							<p><b>Your Star Rating:</b> {{ review.stars }}</p>
 							<p><b>Your Review:</b> {{ review.body }}</p>
-							<cite><b>by:</b> {{ review.author }}</cite>
+							<cite><b>by:</b> {{ review.user }}</cite>
 						</blockquote>
 					<div class="form-group">
 						<select ng-model="review.stars" class="form-control" required>
