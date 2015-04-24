@@ -3,9 +3,8 @@
         This state will show our cart.
         <!-- <a ui-sref="tutorial">tutorial</a> -->
     </p>
-    <div>{{cart}}</div>
-    <input type="text" ng-model="freshKicks"/>
-    <div>{{freshKicks}}</div>
-    <button ng-click="post(freshKicks)">add to cart</button>
+    <div ng-repeat="item in cart.items">{{item.name}} 
+    <img ng-src="{{ item.image }}" width="200px" alt="shoe"/>
+    </div>
     <!-- <img ng-repeat="image in images" ng-src="{{ image }}" /> -->
 </section>
