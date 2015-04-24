@@ -1,0 +1,39 @@
+<div class="stockTable col-lg-3 ">
+	<button type="button" class="btn btn-default btn-block">Edit Categories</button>
+</div>
+<div class="stockTable col-lg-3 ">
+	<button type="button" class="btn btn-default btn-block">Edit Products</button>
+</div>
+<div class="stockTable col-lg-3 ">
+	<button type="button" class="btn btn-default btn-block">Edit Users</button>
+</div>
+<div class="stockTable col-lg-3 ">
+	<button type="button" class="btn btn-default btn-block">Edit Admin Users</button>
+</div>
+<div>
+<div class="row">
+	<div class="col-lg-12"></div>
+	<div class="col-lg-12"></div>
+	<div class="col-lg-12"></div>
+	<div class="col-lg-12"></div>
+</div>
+<section id="admin" ng-controller="AdminController" ng-repeat="item in items.data">
+	<div class="container well">
+		<div class="row">
+			<div class="col-md-3 text-center">
+				{{item}}
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 50px">
+				
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 55px">
+	
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 50px">
+				<button class="btn btn-success">Make Updates</button>
+				<button ng-click="" class="btn btn-info"> Learn More </button>
+			</div>
+		</div>
+	</div>
+	<!-- <product-info ng-show="learnMore"></product-info> -->
+</section>
