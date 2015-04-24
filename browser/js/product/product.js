@@ -8,9 +8,7 @@ app.config(function ($stateProvider) {
 		url: '/product',
 		templateUrl: 'js/product/product.html',
 		controller: 'ProductCtrl'
-
 	});
-
 });
 
 app.controller("ProductCtrl", function ($scope, ProductFactory){
@@ -32,8 +30,6 @@ app.factory('ProductFactory', function ($http) {
     };
 
 });
-
-
 
 app.controller("PanelController", function ($scope) {
 	$scope.tab = 1;
@@ -57,14 +53,14 @@ app.controller("ReviewController", function ($scope) {
 	};
 });
 
-	var shoes = [{
-		name: 'Nike Air Jordan XI "45" Sample',
-		image: "http://images.complex.com/complex/image/upload/t_article_image/xzw3tp7k39lld4h2eu23.jpg",
-		description: 'Michael Jordan wore this sneakers in the early 1990s. Of all the samples of Air Jordans, the "45" XIs remain the most coveted' ,
-		category: "Jordans",
-		price: 500.00,
-		Reviews: ""
-	}];
+var shoes = [{
+	name: 'Nike Air Jordan XI "45" Sample',
+	image: "http://images.complex.com/complex/image/upload/t_article_image/xzw3tp7k39lld4h2eu23.jpg",
+	description: 'Michael Jordan wore this sneakers in the early 1990s. Of all the samples of Air Jordans, the "45" XIs remain the most coveted' ,
+	category: "Jordans",
+	price: 500.00,
+	Reviews: ""
+}];
 
 
 

@@ -8,7 +8,6 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/products/products.html'
 
     });
-
 });
 
 app.controller('ProductsCtrl', function ($scope, ProductFactory) {
@@ -21,7 +20,6 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory) {
     $scope.showInfo = function() {
                 $scope.learnMore = !$scope.learnMore;
             }
-
 });
 
 app.factory('ProductFactory', function ($http) {
@@ -35,5 +33,4 @@ app.factory('ProductFactory', function ($http) {
     return {
         getShoes: getShoes
     };
-
 });
