@@ -4,13 +4,15 @@ var mongoose = require('mongoose');
 module.exports = router;
 var _ = require('lodash');
 var Product = mongoose.model("Product");
+var User = mongoose.model("User");
+var Review = mongoose.model("Review");
 
 router.get('/shoes', function (req, res) {
 
 
 	Product.find({}).deepPopulate('Reviews.user').exec(function(err, products){
 		res.json(products);		
-		console.log(products);
+		//console.log(products);
 
 	});
 });
@@ -48,3 +50,26 @@ router.post('/shoes', function(req, res){
 	});
 });
 
+router.post('/shoes/reviews', function (req, res){
+	console.log("at post route!!!");
+	var shoeName = req.body.name;
+	var addedReview = req.body.Reviews[req.body.Reviews.length-1];
+
+	console.log("POST shoeName: ", shoeName);
+	console.log("POST addedReview: ", addedReview);	
+
+	Product.findOne({ name: shoeName }, function (err, product) {
+		console.log("this is the product", product);
+		
+		Review.create({ body: addedReview.body }, function(err, review){
+			console.log("this is the review", review);
+			product.Reviews.push(review);
+			product.save();
+
+		});
+		//product.Reviews.push(addedReview);
+		//product.save();
+		res.json(product);
+	});
+
+});

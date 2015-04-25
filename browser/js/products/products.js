@@ -45,6 +45,7 @@ app.factory('ProductFactory', function ($http) {
         });
     };
 
+
       var postCart = function(payload){
         return $http.post('/api/cart/items', payload).then(function(response){
         console.log("PAYLOAD TO CART:", response.data);
