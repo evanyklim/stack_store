@@ -14,7 +14,7 @@ cartSchema.methods.totalPrice = function totalPrice (cb) {
 		if(err) return cb(err);
 		
 		var totalPrice = cart.items.reduce(function (prev, curr) {
-			return prev.price + curr.price
+			return prev.price + curr.price;
 		}, 0);
 
 		// for(var i = 0; i < cart.items.length; i++){

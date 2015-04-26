@@ -11,4 +11,4 @@ app.controller('HomeCtrl', function ($scope, Session) {
 
 	$scope.user = Session.user;
 	
-})
+});

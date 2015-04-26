@@ -16,7 +16,7 @@ app.config(function ($stateProvider) {
 
 app.controller('AdminController', function ($scope, $state) {
 
-	$scope.items = { data: ['item 1', 'item 2', 'item 3'] }
+	$scope.items = { data: ['item 1', 'item 2', 'item 3'] };
 
 	$scope.adminMenus = [
 		{ label: 'Categories', menu: 'categories' },
@@ -34,8 +34,14 @@ app.controller('MenuController', function ($scope, $stateParams, MenuFactory) {
 	$scope.currentMenu = $stateParams.menuName;
 
 	// MenuFactory.AdminGetUserInfo().then(function (userInfo) {
-	// 		console.log(userInfo); 
-	// 		$scope.genericData = userInfo;     // generic data store required for all 4 sub states?
-	// });       // on html - use ng-show against the menu string to separate data presentation requirements?
+	// 		console.log('users: ', userInfo); 
+	// 		$scope.userInfo = userInfo;
+	// });       
 
+	MenuFactory.AdminGetCategoryInfo().then(function (categoryInfo) {
+			console.log('categories: ', categoryInfo); 
+			$scope.userInfo = userInfo;
+	});     
+
+	
 });
