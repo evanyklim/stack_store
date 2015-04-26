@@ -19,11 +19,31 @@ app.controller("PanelController", function ($scope) {
 
 });
 
-app.controller("ReviewController", function ($scope) {
+app.controller("ReviewController", function ($scope, $http) { //reviews
     $scope.review = {};
 
     $scope.addReview = function(product) {
         product.Reviews.push($scope.review);
+        postReview(product).then(function(review) {
+            console.log("this is the review!!!", review);
+        });
         $scope.review = {};
     };
+
+        var postReview = function(payload){
+        console.log("HERRERERE");
+        return $http.post('api/products/shoes/reviews', payload).then(function(response){
+            console.log("PAYLOAD TO REVIEW:>>>", response.data);
+            return response.data;
+        });
+     };
+
 });
+
+// app.factory('ProductFactory', function ($http){
+
+
+// });
+
+
+
