@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
 	});
 });
 
-app.controller('CreateController', function ($scope, CreateFactory) {
+app.controller('CreateController', function ($scope, CreateFactory, $http) {
 
 	$scope.communication = { msg: 'Please enter some credentials' };
 
@@ -18,7 +18,17 @@ app.controller('CreateController', function ($scope, CreateFactory) {
 		}).catch(function (err) {
 			console.log(err);
 		});
+	}	
+
+	$scope.fbLogin = function () {
+		return $http.get('auth/facebook').then(function (response) {
+			console.log("HERERE", response);
+			//return response.data;
+		});
 	};
+
+
+
 });
 
 app.factory('CreateFactory', function ($http) {
@@ -33,4 +43,7 @@ app.factory('CreateFactory', function ($http) {
 		createNewUser: createNewUser
 	};
 
+
+
 });
+

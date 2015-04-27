@@ -45,10 +45,11 @@ navbar {
     padding-top: 20px; }
   navbar .navbar-nav {
     padding-top: 8px;
-    padding-right: 25px; }
+    padding-right: 20px; }
   navbar .login-button {
     padding-left: 30px;
-    padding-right: 30px; }
+    padding-right: 30px;
+    margin-left: 10px; }
   navbar .nav > li > a {
     font-size: 18px; }
   navbar .nav > li > a.active {
@@ -122,3 +123,23 @@ tutorial-section-menu {
 #login-form {
   width: 60%;
   margin: 0 auto; }
+
+#create-form {
+  width: 70%;
+  margin: 0 auto;
+  font-color: red;
+  padding-right: 50px; }
+
+#signup-heading {
+  padding-bottom: 50px; }
+
+.vertical-line {
+  border-right-style: solid;
+  border-color: gray;
+  border-height: 100%;
+  border-width: 1px; }
+
+#btn-facebook {
+  margin-top: 90px; }
+  #btn-facebook a {
+    color: #ffffff; }
