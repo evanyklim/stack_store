@@ -16,5 +16,40 @@
 </div>
 </section>
 		<div class="col-md-3 text-center" style="padding-top: 55px">
-			<p class="lead"> Order Total {{ cart.price | currency }}<p>
+			<p class="lead">Order Total</p> <p id="totalPrice">{{ cart.price | currency }}</p>
+		</div>
+		<div class="col-md-3 text-center" style="padding-top: 55px">
+			<button id="customButton">Complete Checkout</button>
+
+				<script>
+				  var handler = StripeCheckout.configure({
+				    key: 'pk_test_ZSaSoxbNpracG0y8KQlFBKWJ',
+				    image: 'https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png',
+				    token: function(token) {
+				    		token.totalPrice = Number(($("#totalPrice").text()).replace(/[^0-9\.]+/g,"")) * 100;
+								$.ajax({
+							  type: "POST",
+							  url: "/api/checkout",
+							  data: token,
+							});
+				    }
+				  });
+
+
+
+				  $('#customButton').on('click', function(e) {
+				    // Open Checkout with further options
+				    handler.open({
+				      name: 'Sneaky',
+				      description: 'Please pay for your items.',
+				      amount: Number(($("#totalPrice").text()).replace(/[^0-9\.]+/g,"")) * 100
+				    });
+				    e.preventDefault();
+				  });
+
+				  // Close Checkout on page navigation
+				  $(window).on('popstate', function() {
+				    handler.close();
+				  });
+				</script>
 		</div>
