@@ -10,3 +10,6 @@ app.directive('adminCategories', function () {
   };
 
 });
+
+// how to stop the onslaught of unmanageable code? can i place a factory / controller
+// on a directive?

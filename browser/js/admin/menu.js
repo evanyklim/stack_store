@@ -1,71 +1,71 @@
 'use strict';
-// consider putting into separate files
+// consider putting these into separate files
 app.factory('MenuFactory', function ($http) {
 
-	var AdminGetCategoryInfo = function () {
+	var AdminGetCategoryData = function () {
 
-		return $http.get('/api/admin/categories/info').then(function (response) {
+		return $http.get('/api/admin/categories/data').then(function (response) {
 			return response.data;
 		});
 	};
 
-	var AdminUpdateCategoryInfo = function (payload) {
+	var AdminUpdateCategoryData = function (payload) {
 
-		return $http.post('/api/admin/categories/info', payload).then(function (response) {
+		return $http.post('/api/admin/categories/data', payload).then(function (response) {
 			return response.data;
 		});
 	};
 
-	var AdminGetProductInfo = function () {
+	var AdminGetProductData = function () {
 
-		return $http.get('/api/admin/users/info').then(function (response) {
+		return $http.get('/api/admin/products/data').then(function (response) {
 			return response.data;
 		});
 	};
 
-	var AdminUpdateProductInfo = function (payload) {
+	var AdminUpdateProductData = function (payload) {
 
-		return $http.post('/api/admin/users/info', payload).then(function (response) {
+		return $http.post('/api/admin/products/data', payload).then(function (response) {
 			return response.data;
 		});
 	};
 
-	var AdminGetOrderInfo = function () {
+	var AdminGetOrderData = function () {
 
-		return $http.get('/api/admin/users/info').then(function (response) {
+		return $http.get('/api/admin/orders/data').then(function (response) {
 			return response.data;
 		});
 	};
 
-	var AdminUpdateOrderInfo = function (payload) {
+	var AdminUpdateOrderData = function (payload) {
 
-		return $http.post('/api/admin/users/info', payload).then(function (response) {
+		return $http.post('/api/admin/orders/data', payload).then(function (response) {
 			return response.data;
 		});
 	};
 
-	var AdminGetUserInfo = function () {
+	var AdminGetUserData = function () {
 
-		return $http.get('/api/admin/users/info').then(function (response) {
+		return $http.get('/api/admin/users/data').then(function (response) {
 			return response.data;
 		});
 	};
 
-	var AdminUpdateUserInfo = function (payload) {
+	var AdminUpdateUserData = function (payload) {
 
-		return $http.post('/api/admin/users/info', payload).then(function (response) {
+		return $http.post('/api/admin/users/data', payload).then(function (response) {
 			return response.data;
 		});
 	};
 
 	return {
-		AdminGetCategoryInfo: AdminGetCategoryInfo,
-		AdminUpdateCategoryInfo: AdminUpdateCategoryInfo,
-		AdminGetProductInfo: AdminGetProductInfo,
-		AdminUpdateProductInfo: AdminUpdateProductInfo,
-		AdminGetOrderInfo: AdminGetOrderInfo,
-		AdminUpdateOrderInfo: AdminUpdateOrderInfo,
-		AdminGetUserInfo: AdminGetUserInfo,
-		AdminUpdateUserInfo: AdminUpdateUserInfo
+		AdminGetCategoryData: AdminGetCategoryData,
+		AdminUpdateCategoryData: AdminUpdateCategoryData,
+		AdminGetProductData: AdminGetProductData,
+		AdminUpdateProductData: AdminUpdateProductData,
+		AdminGetOrderData: AdminGetOrderData,
+		AdminUpdateOrderData: AdminUpdateOrderData,
+		AdminGetUserData: AdminGetUserData,
+		AdminUpdateUserData: AdminUpdateUserData
 	};
 });

@@ -32,16 +32,15 @@ app.controller('AdminController', function ($scope, $state) {
 
 app.controller('MenuController', function ($scope, $stateParams, MenuFactory) {
 	$scope.currentMenu = $stateParams.menuName;
+  $scope.categoryData = { brands: [] };
+  $scope.categoryComms = { msg: 'Need input here somewhere' };
+
+	MenuFactory.AdminGetCategoryData().then(function (categoryData) {
+		$scope.categoryData.brands = categoryData;
+	});
 
 	// MenuFactory.AdminGetUserInfo().then(function (userInfo) {
 	// 		console.log('users: ', userInfo); 
 	// 		$scope.userInfo = userInfo;
 	// });       
-
-	MenuFactory.AdminGetCategoryInfo().then(function (categoryInfo) {
-			console.log('categories: ', categoryInfo); 
-			$scope.userInfo = userInfo;
-	});     
-
-	
 });

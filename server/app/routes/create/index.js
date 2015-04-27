@@ -21,7 +21,7 @@ router.post('/newuser', function(req, res){
 			});
 		}
 	});
-	// .catch(function (err) {
+	// .catch(function (err) {   // does this even work?
 	// 	console.log(err);
 	// });
 });

@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
  			var cartObject = cart.toObject();
  			cartObject.price = cartPrice;
  			console.log("Cart Price: ", cartPrice);
- 			console.log("CART OBJECT: ", cartObject)
+ 			console.log("CART OBJECT: ", cartObject);
  			res.json(cartObject);
  		});
  	});
@@ -24,7 +24,7 @@ router.delete('/items', function (req, res){
 	var product = req.body.product;
 	//need to get productID from front-end and use to remove from items array 
 	Cart.findOne({user: authUser}, function(err, cart){
-		cart.items.filter(function(x){return x !== product});
+		cart.items.filter( function (x) { return x !== product; } );
 		cart.save();
 	});
 });

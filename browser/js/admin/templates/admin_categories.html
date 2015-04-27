@@ -1,18 +1,35 @@
-<section id="admin_cats" ng-repeat="item in items.data">
+<section id="admin-new-cats">
 	<div class="container well">
 		<div class="row">
 			<div class="col-md-3 text-center">
-				{{item}}
+				New Category here!
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 50px">
+				This is where you enter a new category!
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 55px">
+				{{categoryComms.msg}}
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 50px">
+				<button class="btn btn-success">Add Category</button>
+				<button class="btn btn-info">  </button>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="admin-cats" ng-repeat="brand in categoryData.brands">
+	<div class="container well">
+		<div class="row">
+			<div class="col-md-3 text-center">
+				{{brand.name}}
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 50px">
 				Categories Directive!
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 55px">
-				
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 50px">
-				<button class="btn btn-success">Submit Changes</button>
-				<button class="btn btn-info">  </button>
+				<button class="btn btn-info">Delete</button>
 			</div>
 		</div>
 	</div>
