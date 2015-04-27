@@ -3,14 +3,13 @@ var q = require('q');
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.Types.ObjectId;
 var connectToDb = require('./server/db');
-var Review = mongoose.model('Review');
+var review = mongoose.model('Review');
 
 var users = require('./Dbusers.js');
 
-var review1 = new review({ title: 'this shoe stinks', body: "I've never worn shoes this bad", user: users.Evan._id });
-var review2 = new review({ title: 'My life is complete! I will never take these off!!!',
-						   user: users.Anirban._id });
-var review3 = new review({ title: 'Great pair of kicks!', user: users.Carlos._id });
+var review1 = new review({ title: 'this shoe stinks', body: "I've never worn shoes this bad"});
+var review2 = new review({ title: 'My life is complete! I will never take these off!!!'});
+var review3 = new review({ title: 'Great pair of kicks!' });
 
 review1.save();
 review2.save();

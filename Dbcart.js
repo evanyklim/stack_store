@@ -10,7 +10,6 @@ var users = require('./Dbusers.js');
 // console.log(products)
 
 Cart.create({
-	user: users.Anirban._id,
 	items: [ new Product({ name: 'Shoe1' }) ]
 }).then(function (mycart) {
 	console.log('this is the cart created:', mycart);
