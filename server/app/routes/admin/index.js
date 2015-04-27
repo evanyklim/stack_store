@@ -22,7 +22,7 @@ router.post('/categories/data', function (req, res) {
 	.then(
 	function (existingCategory) {
 		if (existingCategory) { 
-			res.send('That category already exists.');
+			res.send('That category already exists');
 		} else {
 			Category.create(req.body, function (err, newCategory) {
 				if (err) return err;
@@ -41,10 +41,38 @@ router.get('/products/data', function (req, res) {
 	});
 });
 
+// add a new product document
 router.post('/products/data', function (req, res) {
-
-	Product.create(function () {
-
+	Product.findOne({ name: req.body.name }).exec()
+	.then(
+	function (existingProduct) {
+		if (existingProduct) {
+			res.send('That product already exists');
+		} else {
+			Category.findOne({ name: req.body.category}).exec()
+			.then(function (category) {
+				req.body.category = category._id;
+				Product.create(req.body, function (newProduct) {
+					console.log(newProduct);
+					res.send('You have created a new product!');
+				});
+			});
+		}
 	});
+});
 
+// retrieve user profiles
+router.get('/users/data', function (req, res) {
+	User.find({}, function (err, users) {
+		if (err) return err;
+		var userProfiles = users.map(function (user) {
+			return _.omit(user.toJSON(), ['salt','password']);
+		});
+		res.send(userProfiles);
+	});
+});
+
+// update user with administrative rights
+router.post('/users/data', function (req, res) {
+	console.log(req.body);
 });

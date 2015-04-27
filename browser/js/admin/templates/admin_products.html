@@ -2,47 +2,50 @@
 	<div class="container well">
 		<div class="row">
 			<div class="col-md-2 text-center">
-				<label for="new-prod-name">New Product Name here!</label>
-				<input type="text" id="new-prod-name" ng-model="newProduct.name"/>
+				<label for="new-prod-name">New Product Name!</label>
+				<input type="text" id="new-prod-name" ng-model="newProd.name">
 			</div>
 			<div class="col-md-2 text-center">
-				<label for="new-prod-cat">New Product Category here!</label>
-				<input type="text" id="new-prod-cat" ng-model="newProduct.category"/>
+				<label for="new-prod-cat">New Product Category!</label>
+				<select ng-model="newProd.category">
+					<option 
+					      ng-repeat="brand in categoryData.brands">{{brand.name}}</option>
+				</select>
 			</div>
 			<div class="col-md-2 text-center">
-				<label for="new-prod-price">New Product Price here!</label>
-				<input type="number" id="new-prod-price" ng-model="newProduct.price"/>
+				<label for="new-prod-price">New Product Price!</label>
+				<input type="number" id="new-prod-price" ng-model="newProd.price">
 			</div>
 			<div class="col-md-2 text-center">
-				<label for="new-prod-desc">New Product Description here!</label>
-				<input type="text" id="new-prod-desc" ng-model="newProduct.description"/>
+				<label for="new-prod-desc">New Product Description!</label>
+				<input type="text" id="new-prod-desc" ng-model="newProd.description">
 			</div>
 			<div class="col-md-2 text-center">
-				<label for="new-prod-img">New Product Image Link here!</label>
-				<input type="text" id="new-prod-img" ng-model="newProduct.image"/>				
+				<label for="new-prod-img">New Product Image Link!</label>
+				<input type="text" id="new-prod-img" ng-model="newProd.image">				
 			</div>
 			<div class="col-md-2 text-center">
 				{{productComms.msg}}
 				<button class="btn btn-success"
-				 ng-click="newProduct(newProduct)">Add Product</button>
+				 ng-click="newProduct(newProd)">Add Product</button>
 			</div>
 		</div>
 	</div>
 </section>
-<section id="admin-prods" ng-repeat="item in productData.items">
+<section id="admin-prods" ng-repeat="item in productData.items | orderBy: 'name'">
 	<div class="container well">
 		<div class="row">
 			<div class="col-md-3 text-center" style="padding-top: 25px">
-				{{item.name}}
+				{{ item.name }}
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 25px">
-				Products Directive!
+				{{ item.description }}
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 25px">
 			  {{ item.price | currency }}
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 25px">
-				<button class="btn btn-success">Update Product</button>
+				<button class="btn btn-success" style="margin-bottom: 10px">Update Product</button>
 				<button class="btn btn-danger">Remove Product</button>
 			</div>
 		</div>

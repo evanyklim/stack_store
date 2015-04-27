@@ -12,7 +12,7 @@ var userSchema = new Schema({
         type: String
     },
     administrator: {
-        type: Boolean
+        type: Boolean, default: false
     },
     password: {
         type: String
@@ -20,9 +20,6 @@ var userSchema = new Schema({
     salt: {
         type: String
     },
-    // salt: {
-    //     type: String
-    // },
     twitter: {
         id: String,
         username: String,
