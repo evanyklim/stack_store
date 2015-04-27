@@ -23,7 +23,7 @@ app.controller("ReviewController", function ($scope, $http) { //reviews
     $scope.review = {};
 
     $scope.addReview = function(product) {
-        product.Reviews.push($scope.review);
+        product.reviews.push($scope.review);
         postReview(product).then(function(review) {
             console.log("this is the review!!!", review);
         });

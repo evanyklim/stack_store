@@ -53,7 +53,7 @@
 			<div class="panel well" ng-show="isSelected(3)">
 				<h4>Past Reviews</h4>
 				<p>{{ product.name }}</p>
-				<blockquote ng-repeat="review in product.Reviews">
+				<blockquote ng-repeat="review in product.reviews">
 					<p><b>Review Title:</b> {{ review.title }}</p>
 					<b>Stars:</b> {{ review.stars }}</p>
 					<p><b>Review:</b> {{ review.body }}</p>
