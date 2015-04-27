@@ -41,6 +41,7 @@ router.get('/products/data', function (req, res) {
 	});
 });
 
+// add a new product document
 router.post('/products/data', function (req, res) {
 	Product.findOne({ name: req.body.name }).exec()
 	.then(
@@ -60,3 +61,18 @@ router.post('/products/data', function (req, res) {
 	});
 });
 
+// retrieve user profiles
+router.get('/users/data', function (req, res) {
+	User.find({}, function (err, users) {
+		if (err) return err;
+		var userProfiles = users.map(function (user) {
+			return _.omit(user.toJSON(), ['salt','password']);
+		});
+		res.send(userProfiles);
+	});
+});
+
+// update user with administrative rights
+router.post('/users/data', function (req, res) {
+	console.log(req.body);
+});
