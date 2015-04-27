@@ -7,7 +7,6 @@ var cartSchema = new Schema({
     items: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 });
 
-
 cartSchema.methods.totalPrice = function totalPrice (cb) {
 	
 	this.populate('items',function(err, cart){
