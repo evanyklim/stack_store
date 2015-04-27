@@ -56,6 +56,11 @@ navbar {
     color: #ffffff; }
   navbar .nav > li > a:focus {
     color: #ffffff; }
+  navbar .glyphicon {
+    font-size: 40px;
+    color: orange;
+    margin-top: 10px;
+    padding-right: 8px; }
 
 #home fullstack-logo {
   padding-top: 30px;
