@@ -6,14 +6,19 @@ var User = mongoose.model('User');
 var Product = mongoose.model('Product');
 var Category = mongoose.model('Category');
 
-var c = Category.create([{ name: 'Nike' },{ name: 'Adidas' },{ name: 'Saucony' }]);
-var d = Category.find({})
-
-c.then(function (err, stuff) {
-	d.exec(function (err, docs) {
-		console.log(docs);
-	})
+var req = { body: { name: 'puma'} };
+Category.findOne(req.body).exec().then( function (x) {
+	console.log(x);
+	console.log('hi!');
 })
+// var c = Category.create([{ name: 'Nike' },{ name: 'Adidas' },{ name: 'Saucony' }]);
+// var d = Category.find({})
+
+// c.then(function (err, stuff) {
+// 	d.exec(function (err, docs) {
+// 		console.log(docs);
+// 	})
+// })
 // var promise = User.count({ email: 'obama@gmail.com', nickname: 'evan'}).exec();
 // promise.then(function (data) {
 // 	console.log('count is:', data);  // returns 0 if nothing found
