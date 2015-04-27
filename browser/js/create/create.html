@@ -1,30 +1,35 @@
 <form id="create-form" name="createForm"
       ng-submit="createForm.$valid && createUser(newUserInfo)">
+<div class="row">
+    <h4 id="signup-heading" class="text-center">You may create a new account using the form below or use your Facebook account to log-in.</h4>
+  <div class="col-md-8 vertical-line">
+    <div class="form-group">
+      <label for="new-email">New User Email Address</label>
+      <input type="text" class="form-control" id="new-email" 
+              ng-model="newUserInfo.email" 
+              placeholder="Please enter a valid email address">
+    </div>
+    <div class="form-group">
+      <label for="new-nickname">New User Nickname</label>
+      <input type="text" class="form-control" id="new-nickname" 
+              ng-model="newUserInfo.nickname" 
+              placeholder="Please enter a valid nick name">
+    </div>  
+    <div class="form-group">
+      <label for="new-password">New User Password</label>
+      <input type="text" class="form-control" id="new-password" 
+              ng-model="newUserInfo.password" 
+              placeholder="Please enter a valid password">
+    </div>
+    <button type="submit" class="btn btn-success">Create My Account!</button>
+    <br><br>
+    <div>
+      <p>{{communication.msg}}</p>
+    </div>
 
-  <p>This is the create account page. It will contain fields 
-    for the new user to enter data for their profile</p>
-
-  <div class="form-group">
-    <label for="new-email">New User Email Address</label>
-    <input type="text" class="form-control" id="new-email" 
-            ng-model="newUserInfo.email" 
-            placeholder="Please enter a valid email address">
   </div>
-  <div class="form-group">
-    <label for="new-nickname">New User Nickname</label>
-    <input type="text" class="form-control" id="new-nickname" 
-            ng-model="newUserInfo.nickname" 
-            placeholder="Please enter a valid nick name">
+  <div class="col-md-4 text-center">
+    <button id="btn-facebook" class="btn btn-primary btn-lg"><a href="/auth/facebook/callback" target="_self">Facebook Login</a></button>
   </div>  
-  <div>
-    <label for="new-password">New User Password</label>
-    <input type="text" class="form-control" id="new-password" 
-            ng-model="newUserInfo.password" 
-            placeholder="Please enter a valid password">
-  </div>
-  <button type="submit" class="btn btn-default">Create My Account!</button>
-  <div>
-    <p>{{communication.msg}}</p>
-  </div>
-  <p ><a href="/auth/facebook/callback" target="_self">Login through Facebook</a></p>
+</div>
 </form>
