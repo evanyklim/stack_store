@@ -26,9 +26,6 @@ app.controller('CreateController', function ($scope, CreateFactory, $http) {
 			//return response.data;
 		});
 	};
-
-
-
 });
 
 app.factory('CreateFactory', function ($http) {

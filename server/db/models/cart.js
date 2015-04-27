@@ -17,7 +17,6 @@ cartSchema.methods.totalPrice = function totalPrice (cb) {
 			totalPrice += parseInt(cart.items[i].price);
 		}
 
-		console.log("Total Price :", totalPrice);
 		cb(null, totalPrice);
 	});
 };

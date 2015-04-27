@@ -1,5 +1,6 @@
 .idea
 node_modules
 bower_components
+public
 npm-debug.log
 .DS_Store

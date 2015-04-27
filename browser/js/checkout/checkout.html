@@ -1,0 +1,33 @@
+
+<div ng-controller="CheckoutCtrl">
+<button id="customButton">Purchase</button>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_ZSaSoxbNpracG0y8KQlFBKWJ',
+    image: 'https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png',
+    token: function(token) {
+				$.ajax({
+			  type: "POST",
+			  url: "/api/checkout",
+			  data: token,
+			});
+    }
+  });
+
+  $('#customButton').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Sneaky',
+      description: 'Please pay for your items.',
+      amount: 1000
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+</script>
+</div>
