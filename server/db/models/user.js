@@ -8,12 +8,18 @@ var userSchema = new Schema({
     email: {
         type: String
     },
+    nickname: {
+        type: String
+    },
     password: {
         type: String
     },
     salt: {
         type: String
     },
+    // salt: {
+    //     type: String
+    // },
     twitter: {
         id: String,
         username: String,
@@ -28,7 +34,7 @@ var userSchema = new Schema({
     },
     orders: [{
        type: Schema.Types.ObjectId, ref: 'Order'  
-   }],
+    }],
 });
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations

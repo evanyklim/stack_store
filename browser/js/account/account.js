@@ -10,24 +10,38 @@ app.config(function ($stateProvider) {
 
 app.controller('AccountController', function ($scope, AccountFactory) {
 
+	$scope.accountComms = { msg: '' };
+
 	AccountFactory.getUserInfo().then(function (userInfo) {
-		console.log(userInfo);
 		$scope.userInfo = userInfo;
 	});
 
+	$scope.updateUser = function (userInfo) {
+		AccountFactory.updateUserInfo(userInfo).then(function (returnMsg) {
+			$scope.accountComms.msg = returnMsg;
+		}).catch(function (err) {
+			console.log(err);
+		});
+	};
 });
 
 app.factory('AccountFactory', function ($http) {
 
 	var getUserInfo = function () {
-
 		return $http.get('/api/account/userinfo').then(function (response) {
 			return response.data;
 		});
 	};
 
+	var updateUserInfo = function (payload) {
+		return $http.post('/api/account/userinfo', payload).then(function (response) {
+			return response.data;
+		});
+	};
+
 	return {
-		getUserInfo: getUserInfo
+		getUserInfo: getUserInfo,
+		updateUserInfo: updateUserInfo
 	};
 
 });
