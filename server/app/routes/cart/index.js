@@ -12,20 +12,22 @@ router.get('/', function (req, res) {
  		cart.totalPrice(function(err, cartPrice){
  			var cartObject = cart.toObject();
  			cartObject.price = cartPrice;
- 			console.log("Cart Price: ", cartPrice);
- 			console.log("CART OBJECT: ", cartObject)
  			res.json(cartObject);
  		});
  	});
 });
 
-router.delete('/items', function (req, res){
+router.delete('/items/:id', function (req, res){
 	var authUser = req.user;
-	var product = req.body.product;
-	//need to get productID from front-end and use to remove from items array 
+	var itemID = req.params.id;
 	Cart.findOne({user: authUser}, function(err, cart){
-		cart.items.filter(function(x){return x !== product});
+		console.log("CART ITEMSBEFORE DELETION", cart.items);
+		var position = cart.items.indexOf(itemID);
+		var removedItemID = cart.items.splice(position, 1);
+		console.log("REMOVED ITEM ID: ", removedItemID);
+		console.log("CART ITEMS AFTER DELETION", cart.items);
 		cart.save();
+		res.json(cart);
 	});
 });
 
@@ -35,7 +37,6 @@ router.post('/items', function(req, res){
 	Cart.findOne({user: authUser}, function(err, cart){
 		cart.items.push(addedProduct._id);
 		cart.save();
-		console.log(cart);
 		res.json(cart);
 	});
 });
