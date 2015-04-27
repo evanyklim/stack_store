@@ -21,7 +21,7 @@ var productSchema = new Schema({
 	description: String,
 	category: { type: Schema.Types.ObjectId, ref: 'Category' },
 	price: { type: Number },
-	Reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
+	reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
 });
 
 productSchema.plugin(deepPopulate);

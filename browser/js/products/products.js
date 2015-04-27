@@ -8,7 +8,6 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/products/products.html'
 
     });
-
 });
 
 app.controller('ProductsCtrl', function ($scope, ProductFactory, CartFactory) {
@@ -29,12 +28,11 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory, CartFactory) {
     $scope.addToCart = function(item){
         console.log("ADDED TO CART :", item);
         CartFactory.postCart(item).then(function(cart){
-      // console.log(cart);
-      // $scope.cart.items.push(cart);
-      $scope.cart = cart;
+          // console.log(cart);
+          // $scope.cart.items.push(cart);
+            $scope.cart = cart;
         });
     };
-
 });
 
 app.factory('ProductFactory', function ($http) {

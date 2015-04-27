@@ -7,10 +7,10 @@ var Review = mongoose.model('Review');
 
 var users = require('./Dbusers.js');
 
-var review1 = new Review({ title: 'this shoe stinks', body: "I've never worn shoes this bad", user: users.Evan._id });
-var review2 = new Review({ title: 'My life is complete! I will never take these off!!!',
+var review1 = new review({ title: 'this shoe stinks', body: "I've never worn shoes this bad", user: users.Evan._id });
+var review2 = new review({ title: 'My life is complete! I will never take these off!!!',
 						   user: users.Anirban._id });
-var review3 = new Review({ title: 'Great pair of kicks!', user: users.Carlos._id });
+var review3 = new review({ title: 'Great pair of kicks!', user: users.Carlos._id });
 
 review1.save();
 review2.save();
@@ -26,7 +26,7 @@ module.exports = [
 		description: 'Michael Jordan wore this sneakers in the early 1990s. Of all the samples of Air Jordans, the "45" XIs remain the most coveted' ,
 		//category: "Jordans",
 		price: 500.00,
-		Reviews: [review1, review2, review3]
+		reviews: [review1, review2, review3]
 	},
 	{
 		name: 'UNDFTD Air Jordan IV',
