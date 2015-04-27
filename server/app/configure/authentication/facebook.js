@@ -16,6 +16,7 @@ module.exports = function (app) {
     };
 
     var verifyCallback = function (accessToken, refreshToken, profile, done) {
+        console.log("At verifyCallback!"); 
 
         UserModel.findOne({ 'facebook.id': profile.id }, function (err, user) {
 
