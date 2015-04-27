@@ -18,7 +18,7 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory, CartFactory) {
         // $scope.products.map(function(elem){
         //     elem.Reviews = [];
         // })
-        console.log($scope.products);
+
 	});
 
     $scope.showInfo = function() {
@@ -26,7 +26,7 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory, CartFactory) {
             };
 
     $scope.addToCart = function(item){
-        console.log("ADDED TO CART :", item);
+
         CartFactory.postCart(item).then(function(cart){
           // console.log(cart);
           // $scope.cart.items.push(cart);
@@ -46,7 +46,7 @@ app.factory('ProductFactory', function ($http) {
 
       var postCart = function(payload){
         return $http.post('/api/cart/items', payload).then(function(response){
-        console.log("PAYLOAD TO CART:", response.data);
+
         return response.data;
         });
   };
