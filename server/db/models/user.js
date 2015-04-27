@@ -10,11 +10,11 @@ var userSchema = new Schema({
     },
     password: {
         type: String,
-        select: false
+        //select: false
     },
     salt: {
         type: String,
-        select: false
+        //select: false
     },
     twitter: {
         id: String,
