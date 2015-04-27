@@ -1,35 +1,28 @@
 <section id="admin-new-cats">
 	<div class="container well">
 		<div class="row">
-			<div class="col-md-3 text-center">
-				New Category here!
+			<div class="col-md-6 text-center" style="padding-top: 25px">
+				<label for="new-cat">New Category here!</label>
+				<input type="text" id="new-cat" ng-model="newCat.name"/>
 			</div>
-			<div class="col-md-3 text-center" style="padding-top: 50px">
-				This is where you enter a new category!
-			</div>
-			<div class="col-md-3 text-center" style="padding-top: 55px">
+			<div class="col-md-3 text-center" style="padding-top: 25px">
 				{{categoryComms.msg}}
 			</div>
-			<div class="col-md-3 text-center" style="padding-top: 50px">
-				<button class="btn btn-success">Add Category</button>
-				<button class="btn btn-info">  </button>
+			<div class="col-md-3 text-center" style="padding-top: 25px">
+				<button class="btn btn-success"
+				 ng-click="newCategory(newCat)">Add Category</button>
 			</div>
 		</div>
 	</div>
 </section>
-<section id="admin-cats" ng-repeat="brand in categoryData.brands">
+<section id="admin-cats" ng-repeat="brand in categoryData.brands | orderBy: 'name'">
 	<div class="container well">
 		<div class="row">
-			<div class="col-md-3 text-center">
+			<div class="col-md-9 text-center" style="padding-top: 25px">
 				{{brand.name}}
 			</div>
-			<div class="col-md-3 text-center" style="padding-top: 50px">
-				Categories Directive!
-			</div>
-			<div class="col-md-3 text-center" style="padding-top: 55px">
-			</div>
-			<div class="col-md-3 text-center" style="padding-top: 50px">
-				<button class="btn btn-info">Delete</button>
+			<div class="col-md-3 text-center" style="padding-top: 25px">
+				<button class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 	</div>
