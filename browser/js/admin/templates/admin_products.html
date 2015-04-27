@@ -1,18 +1,49 @@
-<section id="admin_prods" ng-repeat="item in items.data" ng-show="currentMenu == 'products'">
+<section id="admin-new-prods">
 	<div class="container well">
 		<div class="row">
-			<div class="col-md-3 text-center">
-				{{item}}
+			<div class="col-md-2 text-center">
+				<label for="new-prod-name">New Product Name here!</label>
+				<input type="text" id="new-prod-name" ng-model="newProduct.name"/>
 			</div>
-			<div class="col-md-3 text-center" style="padding-top: 50px">
+			<div class="col-md-2 text-center">
+				<label for="new-prod-cat">New Product Category here!</label>
+				<input type="text" id="new-prod-cat" ng-model="newProduct.category"/>
+			</div>
+			<div class="col-md-2 text-center">
+				<label for="new-prod-price">New Product Price here!</label>
+				<input type="number" id="new-prod-price" ng-model="newProduct.price"/>
+			</div>
+			<div class="col-md-2 text-center">
+				<label for="new-prod-desc">New Product Description here!</label>
+				<input type="text" id="new-prod-desc" ng-model="newProduct.description"/>
+			</div>
+			<div class="col-md-2 text-center">
+				<label for="new-prod-img">New Product Image Link here!</label>
+				<input type="text" id="new-prod-img" ng-model="newProduct.image"/>				
+			</div>
+			<div class="col-md-2 text-center">
+				{{productComms.msg}}
+				<button class="btn btn-success"
+				 ng-click="newProduct(newProduct)">Add Product</button>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="admin-prods" ng-repeat="item in productData.items">
+	<div class="container well">
+		<div class="row">
+			<div class="col-md-3 text-center" style="padding-top: 25px">
+				{{item.name}}
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 25px">
 				Products Directive!
 			</div>
-			<div class="col-md-3 text-center" style="padding-top: 55px">
-			
+			<div class="col-md-3 text-center" style="padding-top: 25px">
+			  {{ item.price | currency }}
 			</div>
-			<div class="col-md-3 text-center" style="padding-top: 50px">
-				<button class="btn btn-success">Submit Changes</button>
-				<button class="btn btn-info">  </button>
+			<div class="col-md-3 text-center" style="padding-top: 25px">
+				<button class="btn btn-success">Update Product</button>
+				<button class="btn btn-danger">Remove Product</button>
 			</div>
 		</div>
 	</div>

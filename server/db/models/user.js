@@ -11,6 +11,9 @@ var userSchema = new Schema({
     nickname: {
         type: String
     },
+    administrator: {
+        type: Boolean
+    },
     password: {
         type: String
     },

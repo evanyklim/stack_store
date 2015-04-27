@@ -18,16 +18,33 @@ router.get('/categories/data', function (req, res) {
 
 // add a category to the db
 router.post('/categories/data', function (req, res) {
-	Category.findOne(req.body).then(
-		function (existingCategory) {
-			if (existingCategory) { 
-				res.send('That category already exists.');
-			} else {
-				Category.create(req.body, function (err, newCategory) {
-					if (err) return err;
-					res.send('You\'ve created a new category!');
-				});
-			}
+	Category.findOne(req.body).exec()
+	.then(
+	function (existingCategory) {
+		if (existingCategory) { 
+			res.send('That category already exists.');
+		} else {
+			Category.create(req.body, function (err, newCategory) {
+				if (err) return err;
+				res.send('You\'ve created a new category!');
+			});
 		}
-	);
+	});
+});
+
+// retrieve product data for display
+router.get('/products/data', function (req, res) {
+	//var options;
+	Product.find({}, function (err, products) {
+		if (err) return err;
+		res.send(products);
+	});
+});
+
+router.post('/products/data', function (req, res) {
+
+	Product.create(function () {
+
+	});
+
 });
