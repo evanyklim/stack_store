@@ -51,18 +51,16 @@ router.post('/shoes', function(req, res){
 });
 
 router.post('/shoes/reviews', function (req, res){
-	console.log("at post route!!!");
+
 	var shoeName = req.body.name;
 	var addedReview = req.body.Reviews[req.body.Reviews.length-1];
 
-	console.log("POST shoeName: ", shoeName);
-	console.log("POST addedReview: ", addedReview);	
 
 	Product.findOne({ name: shoeName }, function (err, product) {
-		console.log("this is the product", product);
+
 		
 		Review.create({ body: addedReview.body }, function(err, review){
-			console.log("this is the review", review);
+
 			product.Reviews.push(review);
 			product.save();
 

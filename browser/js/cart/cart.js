@@ -11,7 +11,6 @@ app.config(function ($stateProvider) {
 app.controller('CartController', function ($scope, CartFactory) {
 
 	CartFactory.getCart().then(function (cart) {
-    console.log("CART THAT IS SENT: ", cart)
 		$scope.cart = cart;
 	});
 
@@ -27,11 +26,9 @@ app.controller('CartController', function ($scope, CartFactory) {
 
 
   $scope.removeFromCart = function(thing){
-    console.log("REACHED REMOVE FROM CART FCN", thing)
     CartFactory.removeFromCart(thing).then(function(){
-      console.log("CART ITEMS AFTER DELETION OF ITEM : ", cart.items);
       $scope.cart = cart;
-      location.reload();
+      location.reload(); //need to use sockets to update in real-time on deletion, for later
     });
   };
 });
@@ -55,7 +52,6 @@ app.factory('CartFactory', function ($http) {
    }; 
 
    var removeFromCart = function(item){
-    console.log("ANGULAR SENDING OUT DELETE", item);
       return $http.delete('api/cart/items/' + item._id).then(function(response){
         return response.data;
       });

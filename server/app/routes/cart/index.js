@@ -21,11 +21,8 @@ router.delete('/items/:id', function (req, res){
 	var authUser = req.user;
 	var itemID = req.params.id;
 	Cart.findOne({user: authUser}, function(err, cart){
-		console.log("CART ITEMSBEFORE DELETION", cart.items);
 		var position = cart.items.indexOf(itemID);
 		var removedItemID = cart.items.splice(position, 1);
-		console.log("REMOVED ITEM ID: ", removedItemID);
-		console.log("CART ITEMS AFTER DELETION", cart.items);
 		cart.save();
 		res.json(cart);
 	});
