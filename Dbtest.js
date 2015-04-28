@@ -5,8 +5,30 @@ var connectToDb = require('./server/db');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product');
 var Category = mongoose.model('Category');
+var Cart = mongoose.model('Cart');
 
-var createUsers;
+var query = User.find({})
+query
+.or([ { email: 'tony@stark.com'}, { nickname: 'ironman'} ])
+.exec()
+.then(function (data) {
+	console.log(data)
+})
+
+// User.find({}, function (err, data) {
+// 	console.log(data)
+// });
+// User
+// .create({ nickname: 'Alex', email: 'alex@mail.com', administrator: true })
+// .then(function (user) {
+// 	return Cart.create({ user: user._id }, function (c) {
+// 		return c
+// 	});
+// })
+// .then(function (data) {
+// 	console.log(data);
+// });
+
 // var req = { body: { name: 'Nike'} };
 // Category.findOne(req.body).exec().then( function (x) {
 // 	console.log(x);
