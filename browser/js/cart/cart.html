@@ -31,7 +31,9 @@
 							  type: "POST",
 							  url: "/api/checkout",
 							  data: token,
+							  success: location.reload() //location.reload's are temporary for functionality of the site
 							});
+
 				    }
 				  });
 
@@ -52,4 +54,10 @@
 				    handler.close();
 				  });
 				</script>
+
+				<form>
+				Apply Promo Code<br>
+				<input type="text" name="promocode">
+				<br>
+				</form>
 		</div>
