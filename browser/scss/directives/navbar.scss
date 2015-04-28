@@ -54,7 +54,6 @@ navbar {
     font-size: 40px;
     padding-top: 20px;
     font-family: 'Shadows Into Light', cursive;
-    color: red;
   }
   .navbar-nav {
         padding-top: 8px;
@@ -71,6 +70,9 @@ navbar {
       color: #ffffff; }
   .nav > li > a:focus {
       color: #ffffff; }
+  .nav > li > a:hover; {
+    color: #ffffff;
+  }
   .glyphicon {
     font-size: 40px;
     color: orange;
