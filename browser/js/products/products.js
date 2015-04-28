@@ -10,7 +10,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ProductsCtrl', function ($scope, ProductFactory, CartFactory) {
+app.controller('ProductsCtrl', function ($scope, ProductFactory) {
     $scope.learnMore = false;
 
 	ProductFactory.getShoes().then(function (shoes) {
@@ -25,14 +25,6 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory, CartFactory) {
                 $scope.learnMore = !$scope.learnMore;
             };
 
-    $scope.addToCart = function(item){
-
-        CartFactory.postCart(item).then(function(cart){
-          // console.log(cart);
-          // $scope.cart.items.push(cart);
-            $scope.cart = cart;
-        });
-    };
 });
 
 app.factory('ProductFactory', function ($http) {
