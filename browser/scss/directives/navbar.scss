@@ -66,13 +66,12 @@ navbar {
   }
   .nav > li > a {
     font-size: 18px; }
+      .nav > li > a:link {
+    color: #ffffff; }
   .nav > li > a.active {
       color: #ffffff; }
   .nav > li > a:focus {
       color: #ffffff; }
-  .nav > li > a:hover; {
-    color: #ffffff;
-  }
   .glyphicon {
     font-size: 40px;
     color: orange;
@@ -93,4 +92,24 @@ navbar {
     color: #ffffff;
   }
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: orange;
+  color: white;
+  display: block;
+  text-align: center;
+}
+
 
