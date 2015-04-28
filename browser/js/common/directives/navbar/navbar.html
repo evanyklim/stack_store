@@ -6,16 +6,23 @@
     <div style="float: right">
       <ul class="nav navbar-nav">
         <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-          <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
+            <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
         </li>
       </ul>
+
+      <a ui-sref="cart"  id="cartLink">
+          <span id="cartItemCounter" ng-controller="CartController">{{ cart.items.length }}</span> 
+          <i class="glyphicon glyphicon-shopping-cart" ui-sref="cart"></i>
+      </a>
+      
       <button ng-show="!user" ui-sref="create" class="btn login-button btn-danger btn-lg">Sign Up</button>
       <button ng-show="!user" ui-sref="login" class="btn login-button btn-primary btn-lg">Login</button>
       <div ng-show="user" class="welcome">
-        <span>Welcome, {{ user.nickname }}!</span>
+        <span>Welcome, {{ user.email }}!</span>
         <a ng-click="logout()">Logout</a>
       </div>
     </div>
   </div>
 </nav>
 <div style="margin-bottom:100px"></div>
+

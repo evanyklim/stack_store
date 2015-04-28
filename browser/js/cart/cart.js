@@ -10,8 +10,11 @@ app.config(function ($stateProvider) {
 
 app.controller('CartController', function ($scope, CartFactory) {
 
+  $scope.itemsCounter = '';
+
 	CartFactory.getCart().then(function (cart) {
 		$scope.cart = cart;
+    $scope.itemsCounter = cart.items.length;
 	});
 
   $scope.post = function(item){
@@ -23,7 +26,16 @@ app.controller('CartController', function ($scope, CartFactory) {
       $scope.cart = cart;
     });
   };
+  
+  $scope.addToCart = function(item){
+      CartFactory.postCart(item).then(function(cart){
+        // console.log(cart);
+        // $scope.cart.items.push(cart);
+          $scope.cart = cart;
+              $scope.itemsCounter = $scope.itemsCounter + 1;
 
+      });
+  };
 
   $scope.removeFromCart = function(thing){
     CartFactory.removeFromCart(thing).then(function(){
@@ -31,7 +43,11 @@ app.controller('CartController', function ($scope, CartFactory) {
       location.reload(); //need to use sockets to update in real-time on deletion, for later
     });
   };
+
 });
+
+
+
 
 app.factory('CartFactory', function ($http) {
 
@@ -45,7 +61,7 @@ app.factory('CartFactory', function ($http) {
     return $http.post('/api/cart/items', payload).then(function(response){
       return response.data;
     });
-  }
+  };
 
    var totalPrice = function(){
     return $http.get('/api/cart/items');
