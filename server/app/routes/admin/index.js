@@ -72,7 +72,13 @@ router.get('/users/data', function (req, res) {
 	});
 });
 
-// update user with administrative rights
+// update user administrative rights
 router.post('/users/data', function (req, res) {
-	console.log(req.body);
+	var id = req.body._id;
+	User.findByIdAndUpdate(id, { administrator: req.body.administrator})
+	.exec()
+	.then(function (updatedAdmin) {
+		res.send('This User\'s Admin Rights are now set to ' 
+			       + updatedAdmin.administrator);
+	});
 });
