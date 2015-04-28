@@ -11,9 +11,20 @@
 				<p class="lead">{{ product.price | currency }}<p>
 			</div>
 			<div class="col-md-3 text-center" style="padding-top: 50px" ng-controller="CartController">
+				
+
+				
+
 				<button class="btn btn-success addToCartBtn" onclick="incrementCart()"
 				ng-click='addToCart(product)'> Add to Cart </button>
 				<button ng-click="showInfo()" class="btn btn-info"> Learn More </button>
+				<div class="alert alert-success alert-dismissible" role="alert" ng-show="product.added">
+					<button type="button" class="close" aria-label="Close" ng-click="product.added = false">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<strong>Added to Your Cart!</strong>
+				</div>
+
 			</div>
 		</div>
 	</div>
