@@ -1,17 +1,19 @@
 <section id="admin-new-cats">
 	<div class="container well">
 		<div class="row">
-			<div class="col-md-6 text-center" style="padding-top: 25px">
-				<label for="new-cat">New Category here!</label>
-				<input type="text" id="new-cat" ng-model="newCat.name"/>
-			</div>
-			<div class="col-md-3 text-center" style="padding-top: 25px">
-				{{categoryComms.msg}}
-			</div>
-			<div class="col-md-3 text-center" style="padding-top: 25px">
-				<button class="btn btn-success"
-				 ng-click="newCategory(newCat)">Add Category</button>
-			</div>
+			<form id="new-cat-form" name="newCatForm" 
+			 			ng-submit="newCatForm.$valid && newCategory(newCat)">
+				<div class="col-md-5 text-center" style="padding-top: 25px">
+					<label for="new-cat" required>Enter New Category Here!</label>
+					<input type="text" id="new-cat" ng-model="newCat.name"/>
+				</div>
+				<div class="col-md-4 text-center" style="padding-top: 25px">
+					{{categoryComms.msg}}
+				</div>
+				<div class="col-md-3 text-center" style="padding-top: 25px">
+					<button class="btn btn-success" type="submit">Add Category</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>

@@ -10,20 +10,19 @@
                 </li>
             </ul>
 
-
-            <a ui-sref="cart"  id="cartLink">
-                <span id="cartItemCounter" ng-controller="CartController">{{ cart.items.length }}</span> 
-                <i class="glyphicon glyphicon-shopping-cart" ui-sref="cart"></i>
-            </a>
-            
-            <button ng-show="!user" ui-sref="create" class="btn login-button btn-danger btn-lg">Sign Up</button>
-            <button ng-show="!user" ui-sref="login" class="btn login-button btn-primary btn-lg">Login</button>
-            <div ng-show="user" class="welcome">
-                <span>Welcome, {{ user.email }}!</span>
-                <a ng-click="logout()">Logout</a>
-            </div>
-        </div>
+      <a ui-sref="cart"  id="cartLink">
+          <span id="cartItemCounter" ng-controller="CartController">{{ cart.items.length }}</span> 
+          <i class="glyphicon glyphicon-shopping-cart" ui-sref="cart"></i>
+      </a>
+      
+      <button ng-show="!user" ui-sref="create" class="btn login-button btn-danger btn-lg">Sign Up</button>
+      <button ng-show="!user" ui-sref="login" class="btn login-button btn-primary btn-lg">Login</button>
+      <div ng-show="user" class="welcome">
+        <span>Welcome, {{ user.email }}!</span>
+        <a ng-click="logout()">Logout</a>
+      </div>
     </div>
+  </div>
 </nav>
 <div style="margin-bottom:100px"></div>
 
