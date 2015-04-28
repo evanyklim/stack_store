@@ -10,15 +10,34 @@
 			<div class="col-md-3 text-center" style="padding-top: 55px">
 				<p class="lead">{{ product.price | currency }}<p>
 			</div>
-			<div class="col-md-3 text-center" style="padding-top: 50px">
-				<button class="btn btn-success" ng-click='addToCart(product)'> Add to Cart </button>
-				<button ng-click="showInfo()" class="btn btn-info"> Learn More </button>
-			</div>
 		</div>
-	</div>
+
+		<div class="col-md-3 text-center" style="padding-top: 50px" ng-controller="CartController">
+			<button class="btn btn-success addToCartBtn" onclick="incrementCart()" ng-click='addToCart(product)'> Add to Cart </button>
+			<button ng-click="showInfo()" class="btn btn-info"> Learn More </button>
+		</div>
+		</div>
+
 	<product-info ng-show="learnMore"></product-info>
 
 </section>
+<script>
+function incrementCart() {
+	$('.addToCartBtn').removeAttr('onclick').click( function(event){
+
+	var counter = $('#cartItemCounter').text();
+	counter++;
+	console.log(counter)
+
+	$('#cartItemCounter').text(counter);	   
+});
+}
+
+
+	
+</script>
+
+
 
 
 
