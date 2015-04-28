@@ -10,9 +10,8 @@
                 </li>
             </ul>
         
-            <a ui-sref="cart" ng-controller="CartController"
-            >
-                {{ cart.items.length }}    
+            <a ui-sref="cart" ng-controller="CartController">
+                <span id="cartItemCounter">{{ cart.items.length }}</span>   
                 <i class="glyphicon glyphicon-shopping-cart" ui-sref="cart"></i>
             </a>
             
@@ -26,3 +25,4 @@
     </div>
 </nav>
 <div style="margin-bottom:100px"></div>
+
