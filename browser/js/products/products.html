@@ -10,14 +10,13 @@
 			<div class="col-md-3 text-center" style="padding-top: 55px">
 				<p class="lead">{{ product.price | currency }}<p>
 			</div>
+			<div class="col-md-3 text-center" style="padding-top: 50px" ng-controller="CartController">
+				<button class="btn btn-success addToCartBtn" onclick="incrementCart()"
+				ng-click='addToCart(product)'> Add to Cart </button>
+				<button ng-click="showInfo()" class="btn btn-info"> Learn More </button>
+			</div>
 		</div>
-
-		<div class="col-md-3 text-center" style="padding-top: 50px" ng-controller="CartController">
-			<button class="btn btn-success addToCartBtn" onclick="incrementCart()" ng-click='addToCart(product)'> Add to Cart </button>
-			<button ng-click="showInfo()" class="btn btn-info"> Learn More </button>
-		</div>
-		</div>
-
+	</div>
 	<product-info ng-show="learnMore"></product-info>
 
 </section>
@@ -31,10 +30,7 @@ function incrementCart() {
 
 	$('#cartItemCounter').text(counter);	   
 });
-}
-
-
-	
+}	
 </script>
 
 

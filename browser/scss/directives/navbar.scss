@@ -53,6 +53,8 @@ navbar {
  .navbar-brand {
     font-size: 40px;
     padding-top: 20px;
+    font-family: 'Shadows Into Light', cursive;
+    color: red;
   }
   .navbar-nav {
         padding-top: 8px;
@@ -74,6 +76,19 @@ navbar {
     color: orange;
     margin-top: 10px;
     padding-right: 8px;
+  }
+  .glyphicon:hover {
+    color: #FF6600;
+  }
+  #cartLink {
+    text-decoration: none;
+  }
+  #cartLink:hover {
+    color: #FF6600;
+  }
+
+  #cartItemCounter {
+    color: #ffffff;
   }
 }
 
