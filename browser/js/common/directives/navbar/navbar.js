@@ -12,13 +12,14 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
         // { label: 'About', state: 'about' },
         // { label: 'Tutorial', state: 'tutorial' },
         { label: 'Products', state: 'products' },
-        { label: 'Account', state: 'account', auth: true },
-        { label: 'Admin', state: 'admin', auth: true }
+        { label: 'Account', state: 'account', auth: true }
+        //{ label: 'Admin', state: 'admin', auth: true }
         //{ label: 'Members Only', state: 'membersOnly', auth: true },
         // { label: 'Cart', state: 'cart' }
       ];
 
       scope.user = null;
+      scope.admin = null; //AuthService.isAdmin();
 
       scope.isLoggedIn = function () {
         return AuthService.isAuthenticated();
@@ -33,11 +34,13 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
       var setUser = function () {
         AuthService.getLoggedInUser().then(function (user) {
           scope.user = user;
+          scope.admin = user.administrator; 
         });
       };
 
       var removeUser = function () {
         scope.user = null;
+        scope.admin = null;
       };
 
       setUser();

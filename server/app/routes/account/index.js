@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 module.exports = router;
 
-router.get('/userinfo', function (req, res) {
+router.get('/', function (req, res) {
   
   var findUser = User.findOne({ _id: req.user._id }).exec();
   
@@ -14,7 +14,7 @@ router.get('/userinfo', function (req, res) {
   });
 });
 
-router.post('/userinfo', function (req, res) {
+router.post('/', function (req, res) {
  
   var id = req.user._id;
   var update = req.body;
@@ -25,8 +25,5 @@ router.post('/userinfo', function (req, res) {
 	updateUser.exec(function (err, user) {
 		res.send('You have successfully updated your account!');
 	});
-	// .catch(function (err) {    // why does this return errors even when the operation is successful?
-	// 	res.send(err);
-	// });
 });
 
