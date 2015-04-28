@@ -10,9 +10,9 @@ var Review = mongoose.model("Review");
 router.get('/shoes', function (req, res) {
 
 
-	Product.find({}).deepPopulate('Reviews.user').exec(function(err, products){
+	Product.find({}).deepPopulate('reviews.user').exec(function(err, products){
 		res.json(products);		
-		//console.log(products);
+		console.log(products);
 
 	});
 });
@@ -53,7 +53,7 @@ router.post('/shoes', function(req, res){
 router.post('/shoes/reviews', function (req, res){
 
 	var shoeName = req.body.name;
-	var addedReview = req.body.Reviews[req.body.Reviews.length-1];
+	var addedReview = req.body.reviews[req.body.reviews.length-1];
 
 
 	Product.findOne({ name: shoeName }, function (err, product) {
@@ -61,7 +61,7 @@ router.post('/shoes/reviews', function (req, res){
 		
 		Review.create({ body: addedReview.body }, function(err, review){
 
-			product.Reviews.push(review);
+			product.reviews.push(review);
 			product.save();
 
 		});
