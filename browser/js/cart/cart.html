@@ -1,4 +1,5 @@
-<section id="cart" ng-controller="CartController" ng-repeat="item in cart.items" >
+<section id="cart" ng-controller="CartController">
+	<div ng-repeat="item in cart.items">
 		<div class="row">
 		<div class="col-md-3 text-center">
 			<img ng-src="{{ item.image }}" width="200px" alt="shoe"/>
@@ -13,11 +14,12 @@
 			<button class="btn btn-success" ng-click='removeFromCart(item)'> Remove From Cart </button>
 		</div>
 	</div>
+	</div>
 </div>
-</section>
 		<div class="col-md-3 text-center" style="padding-top: 55px">
 			<p class="lead">Order Total</p> <p id="totalPrice">{{ cart.price | currency }}</p>
 		</div>
+</section>
 		<div class="col-md-3 text-center" style="padding-top: 55px">
 			<button id="customButton">Complete Checkout</button>
 
