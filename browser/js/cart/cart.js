@@ -38,9 +38,12 @@ app.controller('CartController', function ($scope, CartFactory) {
   };
 
   $scope.removeFromCart = function(thing){
-    CartFactory.removeFromCart(thing).then(function(){
+    console.log("REMOVED ITEM : ", thing);
+    CartFactory.removeFromCart(thing).then(function(cart){
+      console.log("CART: ",cart);
       $scope.cart = cart;
-      location.reload(); //need to use sockets to update in real-time on deletion, for later
+            console.log("SCOPE CART: ",$scope.cart);
+      // location.reload(); //need to use sockets to update in real-time on deletion, for later
     });
   };
 

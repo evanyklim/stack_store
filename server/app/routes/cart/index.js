@@ -20,11 +20,17 @@ router.get('/', function (req, res) {
 router.delete('/items/:id', function (req, res){
 	var authUser = req.user;
 	var itemID = req.params.id;
-	Cart.findOne({user: authUser}, function(err, cart){
-		var position = cart.items.indexOf(itemID);
-		var removedItemID = cart.items.splice(position, 1);
-		cart.save();
-		res.json(cart);
+	Cart.findOne({user: authUser}).exec(function(err, cart){
+			var position = cart.items.indexOf(itemID);
+			var removedItem = cart.items.splice(position, 1);
+			cart.save(function(err, savedCart){
+				savedCart.totalPrice(function(err, cartPrice){
+	 			var cartObject = savedCart.toObject();
+	 			cartObject.price = cartPrice;
+	 			console.log("saved cart items: ", savedCart.items.length);
+				res.json(cartObject);
+				});
+			});
 	});
 });
 
