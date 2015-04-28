@@ -12,7 +12,10 @@ app.controller('CartController', function ($scope, CartFactory) {
 
 	CartFactory.getCart().then(function (cart) {
 		$scope.cart = cart;
+    $scope.cart_length = cart.items.length;
+
 	});
+
 
   $scope.post = function(item){
     // post request will only work with JSON payload
@@ -21,6 +24,8 @@ app.controller('CartController', function ($scope, CartFactory) {
       // console.log(cart);
       // $scope.cart.items.push(cart);
       $scope.cart = cart;
+      //$scope.cart_length = cart.items.length;
+
     });
   };
 
@@ -28,6 +33,7 @@ app.controller('CartController', function ($scope, CartFactory) {
   $scope.removeFromCart = function(thing){
     CartFactory.removeFromCart(thing).then(function(){
       $scope.cart = cart;
+
       location.reload(); //need to use sockets to update in real-time on deletion, for later
     });
   };

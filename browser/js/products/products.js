@@ -12,6 +12,7 @@ app.config(function ($stateProvider) {
 
 app.controller('ProductsCtrl', function ($scope, ProductFactory, CartFactory) {
     $scope.learnMore = false;
+    //$scope.cart_length = 0;
 
 	ProductFactory.getShoes().then(function (shoes) {
 		$scope.products = shoes;
@@ -30,7 +31,11 @@ app.controller('ProductsCtrl', function ($scope, ProductFactory, CartFactory) {
         CartFactory.postCart(item).then(function(cart){
           // console.log(cart);
           // $scope.cart.items.push(cart);
+          cart.items.length++;
+          console.log("jereere")
             $scope.cart = cart;
+            // $scope.cart_length = cart.items.length;
+            //       console.log("SCOPE", cart.items.length);
         });
     };
 });
