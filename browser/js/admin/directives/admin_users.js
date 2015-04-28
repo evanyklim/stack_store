@@ -18,7 +18,7 @@ app.controller('AdminUserCtrl', function ($scope, MenuFactory) {
   });
 
   $scope.ChangeAdmin = function (userAdminData) {
-  	console.log($scope);   // why do i get hashkey out of this?
+  	console.log($scope);
   	console.log(this);
   	userAdminData._id = this.user._id;
   	MenuFactory.AdminUpdateUserData(userAdminData)

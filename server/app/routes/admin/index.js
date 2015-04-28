@@ -18,7 +18,8 @@ router.get('/categories/data', function (req, res) {
 
 // add a category to the db
 router.post('/categories/data', function (req, res) {
-	Category.findOne(req.body).exec()
+	Category.findOne(req.body)
+	.exec()
 	.then(
 	function (existingCategory) {
 		if (existingCategory) { 
@@ -43,18 +44,19 @@ router.get('/products/data', function (req, res) {
 
 // add a new product document
 router.post('/products/data', function (req, res) {
-	Product.findOne({ name: req.body.name }).exec()
+	Product.findOne({ name: req.body.name })
+	.exec()
 	.then(
 	function (existingProduct) {
 		if (existingProduct) {
 			res.send('That product already exists');
 		} else {
-			Category.findOne({ name: req.body.category}).exec()
+			Category.findOne({ name: req.body.category})
+			.exec()
 			.then(function (category) {
 				req.body.category = category._id;
 				Product.create(req.body, function (newProduct) {
-					console.log(newProduct);
-					res.send('You have created a new product!');
+					res.send('You\'ve created a new product!');
 				});
 			});
 		}
