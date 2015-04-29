@@ -9,11 +9,15 @@ module.exports = router;
 router.get('/', function (req, res) {
 	var authUser = req.user;
  	Cart.findOne({user: authUser}).populate('items').exec(function (err, cart) {
- 		cart.totalPrice(function(err, cartPrice){
- 			var cartObject = cart.toObject();
- 			cartObject.price = cartPrice;
- 			res.json(cartObject);
- 		});
+ 		if (cart) {
+	 		cart.totalPrice(function(err, cartPrice){
+	 			var cartObject = cart.toObject();
+	 			cartObject.price = cartPrice;
+	 			res.json(cartObject);
+	 		});
+ 		} else {
+ 			return;
+ 		}
  	});
 });
 
