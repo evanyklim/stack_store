@@ -1,39 +1,34 @@
 <section id="admin-new-prods">
 	<div class="container well">
 		<div class="row">
-			<form name="newProductForm" 
-						ng-submit="newProductForm.$valid && newProduct(newProd)" novalidate>
-				<div class="col-md-2 text-center">
-					<label for="new-prod-name">New Product Name!</label>
-					<input type="text" id="new-prod-name" required ng-model="newProd.name">
-				</div>
-				<div class="col-md-2 text-center">
-					<label for="new-prod-cat">New Product Category!</label>
-					<select ng-model="newProd.category">
-						<option required
-						      ng-repeat="brand in categoryData.brands">{{brand.name}}</option>
-					</select>
-				</div>
-				<div class="col-md-2 text-center">
-					<label for="new-prod-price">New Product Price!</label>
-					<input type="number" id="new-prod-price" 
-					       required ng-model="newProd.price">
-				</div>
-				<div class="col-md-2 text-center">
-					<label for="new-prod-desc">New Product Description!</label>
-					<input type="text" id="new-prod-desc" 
-					       required ng-model="newProd.description">
-				</div>
-				<div class="col-md-2 text-center">
-					<label for="new-prod-img">New Product Image Link!</label>
-					<input type="text" id="new-prod-img" 
-								 required ng-model="newProd.image">				
-				</div>
-				<div class="col-md-2 text-center">
-					{{productComms.msg}}
-					<button class="btn btn-success" type="submit">Add Product</button>
-				</div>
-			</form>
+			<div class="col-md-2 text-center">
+				<label for="new-prod-name">New Product Name!</label>
+				<input type="text" id="new-prod-name" ng-model="newProd.name">
+			</div>
+			<div class="col-md-2 text-center">
+				<label for="new-prod-cat">New Product Category!</label>
+				<select ng-model="newProd.category">
+					<option 
+					      ng-repeat="brand in categoryData.brands">{{brand.name}}</option>
+				</select>
+			</div>
+			<div class="col-md-2 text-center">
+				<label for="new-prod-price">New Product Price!</label>
+				<input type="number" id="new-prod-price" ng-model="newProd.price">
+			</div>
+			<div class="col-md-2 text-center">
+				<label for="new-prod-desc">New Product Description!</label>
+				<input type="text" id="new-prod-desc" ng-model="newProd.description">
+			</div>
+			<div class="col-md-2 text-center">
+				<label for="new-prod-img">New Product Image Link!</label>
+				<input type="text" id="new-prod-img" ng-model="newProd.image">				
+			</div>
+			<div class="col-md-2 text-center">
+				{{productComms.msg}}
+				<button class="btn btn-success"
+				 ng-click="newProduct(newProd)">Add Product</button>
+			</div>
 		</div>
 	</div>
 </section>

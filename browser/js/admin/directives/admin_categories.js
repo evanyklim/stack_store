@@ -1,10 +1,22 @@
 'use strict';
+app.directive('adminCategories', function () {
 
-app.controller('AdminCategoryCtrl', function ($scope, MenuFactory, showCategoryData) {
+  return {
+    restrict: 'E',
+    templateUrl: 'js/admin/templates/admin_categories.html',
+    controller: 'AdminCategoryCtrl'
+  };
+
+});
+
+app.controller('AdminCategoryCtrl', function ($scope, MenuFactory) {
 
 	$scope.categoryData = { brands: [] };
-  $scope.categoryData.brands = showCategoryData;
   $scope.categoryComms = { msg: 'Enter a new category' };
+
+	MenuFactory.AdminGetCategoryData().then(function (categoryData) {
+		$scope.categoryData.brands = categoryData;
+	});
 
 	$scope.newCategory = function (newCategoryData) {
 		MenuFactory.AdminUpdateCategoryData(newCategoryData)

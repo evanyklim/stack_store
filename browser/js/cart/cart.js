@@ -32,9 +32,8 @@ app.controller('CartController', function ($scope, CartFactory) {
         // console.log(cart);
         // $scope.cart.items.push(cart);
           $scope.cart = cart;
-
-          //$scope.itemsCounter = $scope.itemsCounter + 1;
-          item.added = true;
+              $scope.itemsCounter = $scope.itemsCounter + 1;
+                    item.added = true;
 
       });
   };

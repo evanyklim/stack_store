@@ -9,7 +9,7 @@ var Category = mongoose.model('Category');
 module.exports = router;
 
 // retrieve all categories for display
-router.get('/categories', function (req, res) {
+router.get('/categories/data', function (req, res) {
 	Category.find({}, 'name', function (err, categories) {
 		if (err) return err;
 		res.send(categories);
@@ -17,7 +17,7 @@ router.get('/categories', function (req, res) {
 });
 
 // add a category to the db
-router.post('/categories', function (req, res) {
+router.post('/categories/data', function (req, res) {
 	Category.findOne(req.body)
 	.exec()
 	.then(
@@ -34,7 +34,7 @@ router.post('/categories', function (req, res) {
 });
 
 // retrieve product data for display
-router.get('/products', function (req, res) {
+router.get('/products/data', function (req, res) {
 	//var options;
 	Product.find({}, function (err, products) {
 		if (err) return err;
@@ -43,7 +43,7 @@ router.get('/products', function (req, res) {
 });
 
 // add a new product document
-router.post('/products', function (req, res) {
+router.post('/products/data', function (req, res) {
 	Product.findOne({ name: req.body.name })
 	.exec()
 	.then(
@@ -64,7 +64,7 @@ router.post('/products', function (req, res) {
 });
 
 // retrieve user profiles
-router.get('/users', function (req, res) {
+router.get('/users/data', function (req, res) {
 	User.find({}, function (err, users) {
 		if (err) return err;
 		var userProfiles = users.map(function (user) {
@@ -75,7 +75,7 @@ router.get('/users', function (req, res) {
 });
 
 // update user administrative rights
-router.post('/users', function (req, res) {
+router.post('/users/data', function (req, res) {
 	var id = req.body._id;
 	User.findByIdAndUpdate(id, { administrator: req.body.administrator})
 	.exec()
