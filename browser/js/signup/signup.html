@@ -1,7 +1,7 @@
-<form id="create-form" name="createForm"
-      ng-submit="createForm.$valid && createUser(newUserInfo)">
+<form id="signup-form" name="signupForm"
+      ng-submit="signupForm.$valid && signupUser(newUserInfo)">
   <div class="row">
-      <h4 id="signup-heading" class="text-center">You may create a new account using the form below or use your Facebook account to log-in.</h4>
+      <h4 id="signup-heading" class="text-center">You may sign up for a new account using the form below or use your Facebook account to log-in.</h4>
     <div class="col-md-8 vertical-line">
       <div class="form-group">
         <label for="new-email">New User Email Address</label>
@@ -21,7 +21,7 @@
                 ng-model="newUserInfo.password" 
                 placeholder="Please enter a valid password">
       </div>
-      <button type="submit" class="btn btn-success">Create My Account!</button>
+      <button type="submit" class="btn btn-success">Sign Me Up!</button>
       <br><br>
       <div>
         <p>{{communication.msg}}</p>

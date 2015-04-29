@@ -11,7 +11,6 @@ app.config(function ($stateProvider) {
 app.controller('AccountController', function ($scope, AccountFactory) {
 
 	$scope.accountComms = { msg: '' };
-
 	AccountFactory.getUserInfo().then(function (userInfo) {
 		$scope.userInfo = userInfo;
 	});
@@ -28,13 +27,13 @@ app.controller('AccountController', function ($scope, AccountFactory) {
 app.factory('AccountFactory', function ($http) {
 
 	var getUserInfo = function () {
-		return $http.get('/api/account/userinfo').then(function (response) {
+		return $http.get('/api/account').then(function (response) {
 			return response.data;
 		});
 	};
 
 	var updateUserInfo = function (payload) {
-		return $http.post('/api/account/userinfo', payload).then(function (response) {
+		return $http.post('/api/account', payload).then(function (response) {
 			return response.data;
 		});
 	};

@@ -5,10 +5,10 @@ var User = mongoose.model("User");
 var Cart = mongoose.model('Cart');
 module.exports = router;
 
-router.post('/newuser', function(req, res){
+router.post('/', function(req, res){
 	var nickname = req.body.nickname,
 		  email = req.body.email;
-	var query = User.find({})
+	var query = User.find({});
 
 	query
 	.or( [ { email: email }, { nickname: nickname } ] )
