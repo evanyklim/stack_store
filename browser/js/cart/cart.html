@@ -1,65 +1,87 @@
-<section id="cart" ng-controller="CartController">
-	<div ng-repeat="item in cart.items">
+<section id="cart" ng-controller="CartController" >
+	<div class="container well" ng-repeat="item in cart.items">
 		<div class="row">
-		<div class="col-md-3 text-center">
-			<img ng-src="{{ item.image }}" width="200px" alt="shoe"/>
+			<div class="col-md-3 text-center">
+				<img ng-src="{{ item.image }}" width="200px" alt="shoe"/>
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 50px">
+				<h4>{{ item.name }}</h4>
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 55px">
+				<p class="lead">{{ item.price | currency }}<p>
+			</div>
+			<div class="col-md-3 text-center" style="padding-top: 50px">
+				<button class="btn btn-success removeFromCartBtn" onclick="decreaseCart()" ng-click='removeFromCart(item)'> Remove From Cart </button>
+			</div>
+			</div>
 		</div>
-		<div class="col-md-3 text-center" style="padding-top: 50px">
-			<h4>{{ item.name }}</h4>
-		</div>
-		<div class="col-md-3 text-center" style="padding-top: 55px">
-			<p class="lead">{{ item.price | currency }}<p>
-		</div>
-		<div class="col-md-3 text-center" style="padding-top: 50px">
-			<button class="btn btn-success" ng-click='removeFromCart(item)'> Remove From Cart </button>
-		</div>
+		</section>
+	<div class="container well">
+	<div class="row">
+	<div class="col-md-3 text-center" style="padding-top: 40px">
+		<p class="lead">Order Total:</p>
 	</div>
+	<div class="col-md-3 text-center" style="padding-top: 40px">
+		<p id="totalPrice">{{ cart.price | currency }}</p>
 	</div>
+
+<div class="col-md-3 text-center" style="padding-top: 40px">
+	<button id="customButton" class="btn btn-success">Complete Checkout</button>
 </div>
-		<div class="col-md-3 text-center" style="padding-top: 55px">
-			<p class="lead">Order Total</p> <p id="totalPrice">{{ cart.price | currency }}</p>
-		</div>
-</section>
-		<div class="col-md-3 text-center" style="padding-top: 55px">
-			<button id="customButton">Complete Checkout</button>
-
-				<script>
-				  var handler = StripeCheckout.configure({
-				    key: 'pk_test_ZSaSoxbNpracG0y8KQlFBKWJ',
-				    image: 'https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png',
-				    token: function(token) {
-				    		token.totalPrice = Number(($("#totalPrice").text()).replace(/[^0-9\.]+/g,"")) * 100;
-								$.ajax({
-							  type: "POST",
-							  url: "/api/checkout",
-							  data: token,
-							  success: location.reload() //location.reload's are temporary for functionality of the site
-							});
-
-				    }
-				  });
-
-
-
-				  $('#customButton').on('click', function(e) {
-				    // Open Checkout with further options
-				    handler.open({
-				      name: 'Sneaky',
-				      description: 'Please pay for your items.',
-				      amount: Number(($("#totalPrice").text()).replace(/[^0-9\.]+/g,"")) * 100
-				    });
-				    e.preventDefault();
-				  });
-
-				  // Close Checkout on page navigation
-				  $(window).on('popstate', function() {
-				    handler.close();
-				  });
-				</script>
-
-				<form>
+<div class="col-md-3 text-center" style="padding-top: 35px">
+			<form>
 				Apply Promo Code<br>
 				<input type="text" name="promocode">
 				<br>
-				</form>
+			</form>
+		
+</div>
 		</div>
+		</div>
+			<script>
+		var handler = StripeCheckout.configure({
+			key: 'pk_test_ZSaSoxbNpracG0y8KQlFBKWJ',
+			image: 'https://jlau-bucket-1.s3.amazonaws.com/uploads/topic/image/42/fullstack.png',
+			token: function(token) {
+				token.totalPrice = Number(($("#totalPrice").text()).replace(/[^0-9\.]+/g,"")) * 100;
+				$.ajax({
+					type: "POST",
+					url: "/api/checkout",
+					data: token,
+							  success: location.reload() //location.reload's are temporary for functionality of the site
+							});
+
+			}
+		});
+
+
+
+		$('#customButton').on('click', function(e) {
+				    // Open Checkout with further options
+				    handler.open({
+				    	name: 'Sneaky',
+				    	description: 'Please pay for your items.',
+				    	amount: Number(($("#totalPrice").text()).replace(/[^0-9\.]+/g,"")) * 100
+				    });
+				    e.preventDefault();
+				});
+
+				  // Close Checkout on page navigation
+				  $(window).on('popstate', function() {
+				  	handler.close();
+				  });
+				</script>
+
+		<script>
+			
+				function decreaseCart() {
+					$('.removeFromCartBtn').removeAttr('onclick').click( function(event){
+
+						var counter = $('#cartItemCounter').text();
+						counter--;
+						console.log(counter)
+
+						$('#cartItemCounter').text(counter);	   
+					});
+				}
+			</script>

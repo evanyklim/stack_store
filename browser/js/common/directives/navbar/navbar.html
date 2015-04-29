@@ -14,15 +14,15 @@
         </li>
       </ul>
       <a ui-sref="cart" id="cartLink">
-          <span id="cartItemCounter" ng-controller="CartController"></span> 
+          <span id="cartItemCounter" ng-controller="CartController">{{ itemsCounter }}</span> 
           <i class="glyphicon glyphicon-shopping-cart" ui-sref="cart"></i>
       </a>
       
       <button ng-show="!user" ui-sref="create" class="btn login-button btn-danger btn-lg">Sign Up</button>
       <button ng-show="!user" ui-sref="login" class="btn login-button btn-primary btn-lg">Login</button>
       <div ng-show="user" class="welcome">
-        <span>Welcome, {{ user.email }}!</span>
-        <a ng-click="logout()">Logout</a>
+        <span id="welcome-message">Welcome, {{ user.email }}!</span>
+        <button class="btn btn-danger btn-lg"<a ng-click="logout()">Logout</a></button>
       </div>
     </div>
   </div>
