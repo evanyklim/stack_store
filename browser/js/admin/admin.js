@@ -45,17 +45,9 @@ app.config(function ($stateProvider) {
 			return MenuFactory.AdminGetUserData();
 		}}
 	});
-
-	// $stateProvider.state('admin.menu', {
-	// 	url: '/:menuName',
-	// 	templateUrl: 'js/admin/menu.html',
-	// 	controller: 'MenuController'
-	// });
 });
 
 app.controller('AdminController', function ($scope, $state) {
-
-	$scope.items = { data: ['item 1', 'item 2', 'item 3'] };
 
 	$scope.adminMenus = [
 		{ label: 'Categories', menu: 'admin.categories' },
@@ -63,14 +55,4 @@ app.controller('AdminController', function ($scope, $state) {
 		{ label: 'Order History', menu: 'admin.orders' },
 		{ label: 'User Admins', menu: 'admin.users' },
 	];
-
-	$scope.switchMenu = function (menu) {
-		$state.go('admin.menu', { menuName: menu });
-	};
 });
-
-// app.controller('MenuController', function ($scope, $stateParams, MenuFactory) {
-  
-//   $scope.currentMenu = $stateParams.menuName;    
-
-// });
