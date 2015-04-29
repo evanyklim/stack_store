@@ -1,24 +1,12 @@
 'use strict';
-app.directive('adminUsers', function () {
 
-  return {
-    restrict: 'E',
-    templateUrl: 'js/admin/templates/admin_users.html',
-    controller: 'AdminUserCtrl'
-  };
-});
-
-app.controller('AdminUserCtrl', function ($scope, MenuFactory) {
+app.controller('AdminUserCtrl', function ($scope, MenuFactory, showUserData) {
 
 	$scope.userData = { users: [] };
+  $scope.userData.users = showUserData;
   $scope.userComms = { msg: 'Current User Administrative Rights' };
 
-  MenuFactory.AdminGetUserData().then(function (userData) {
-  	$scope.userData.users = userData;
-  });
-
   $scope.ChangeAdmin = function (userAdminData) {
-  	console.log($scope);
   	console.log(this);
   	userAdminData._id = this.user._id;
   	MenuFactory.AdminUpdateUserData(userAdminData)

@@ -2,10 +2,10 @@
 	<div class="container well">
 		<div class="row">
 			<form id="new-cat-form" name="newCatForm" 
-			 			ng-submit="newCatForm.$valid && newCategory(newCat)">
+			 			ng-submit="newCatForm.$valid && newCategory(newCat)" novalidate>
 				<div class="col-md-5 text-center" style="padding-top: 25px">
-					<label for="new-cat" required>Enter New Category Here!</label>
-					<input type="text" id="new-cat" ng-model="newCat.name"/>
+					<label for="new-cat">Enter New Category Here!</label>
+					<input type="text" id="new-cat" required ng-model="newCat.name"/>
 				</div>
 				<div class="col-md-4 text-center" style="padding-top: 25px">
 					{{categoryComms.msg}}

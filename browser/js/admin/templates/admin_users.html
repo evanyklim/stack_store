@@ -1,25 +1,28 @@
 <section id="admin_users" ng-repeat="user in userData.users">
 	<div class="container well">
 		<div class="row">
-			<div class="col-md-3 text-center" style="padding-top: 25px">
-				<label>User Nickname</label>
-				{{user.nickname}}
-			</div>
-			<div class="col-md-3 text-center" style="padding-top: 25px">
-				<label>User Email</label>
-				{{user.email}}
-			</div>
-			<div class="col-md-3 text-center" style="padding-top: 25px">
-				<label>{{userComms.msg}}</label>
-				<select ng-model="userAdminRights.administrator">
-					<option selected>{{user.administrator}}</option>
-					<option>{{!user.administrator}}</option>
-				</select>
-			</div>
-			<div class="col-md-3 text-center" style="padding-top: 25px">
-				<button class="btn btn-success"
-				ng-click="ChangeAdmin(userAdminRights)">Update Admin Rights</button>
-			</div>
+			<form name="UserForm" 
+						ng-submit="UserForm.$valid && ChangeAdmin(userAdminRights)" 
+						novalidate>
+				<div class="col-md-3 text-center" style="padding-top: 25px">
+					<label>User Nickname</label>
+					{{user.nickname}}
+				</div>
+				<div class="col-md-3 text-center" style="padding-top: 25px">
+					<label>User Email</label>
+					{{user.email}}
+				</div>
+				<div class="col-md-3 text-center" style="padding-top: 25px">
+					<label>{{userComms.msg}}</label>
+					<select required ng-model="userAdminRights.administrator">
+						<option selected>{{user.administrator}}</option>
+						<option>{{!user.administrator}}</option>
+					</select>
+				</div>
+				<div class="col-md-3 text-center" style="padding-top: 25px">
+					<button class="btn btn-success">Update Admin Rights</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>
