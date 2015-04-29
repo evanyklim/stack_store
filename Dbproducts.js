@@ -7,9 +7,9 @@ var review = mongoose.model('Review');
 
 var users = require('./Dbusers.js');
 
-var review1 = new review({ title: 'this shoe stinks', body: "I've never worn shoes this bad"});
-var review2 = new review({ title: 'My life is complete! I will never take these off!!!'});
-var review3 = new review({ title: 'Great pair of kicks!' });
+var review1 = new review({ title: 'this shoe stinks', body: "I've never worn shoes this bad", score: 1});
+var review2 = new review({ title: 'My life is complete! I will never take these off!!!', body: "Excellent shoes, ver comfortable, highly recommended!", score: 4});
+var review3 = new review({ title: 'Great pair of kicks!', body: "Can't go wrong with these kicks", score: 3});
 
 review1.save();
 review2.save();

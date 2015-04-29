@@ -17,32 +17,6 @@ router.get('/shoes', function (req, res) {
 	});
 });
 
-	// Product.find({}).
-	// .populate('Reviews')
-	// .exec()
-	// .then(function (products) {
-	// 	return products.map(function(product){
-	// 		return product.Reviews.map(function(review){
-	// 			return review
-	// 			.populate('User').execPopulate().then(function(review){
-	// 				console.log("HEREEEEEE", review);
-
-	// 			});
-	// 			});
-	// 		});
-	// 	});
-	// });
-
-
-	// .then(function (products) {
-	// 	console.log(products);
-	// });
-
-
-
-
-
-
 router.post('/shoes', function(req, res){
 		var newItem = req.body.items;
 		Product.create({name: newItem}, function(err, product){ //replace when products page has products listed
@@ -52,14 +26,31 @@ router.post('/shoes', function(req, res){
 
 router.post('/shoes/reviews', function (req, res){
 
+	console.log(req.user);
+
 	var shoeName = req.body.name;
 	var addedReview = req.body.reviews[req.body.reviews.length-1];
 
 
+
+	Product.findOne({ name: shoeName })
+		.populate('reviews').exec(function (err, product){
+		
+			Review.create({ title: addedReview.title, score: addedReview.score, body: addedReview.body })
+				.populate('user').exec(function (err, review){
+					console.log("REVERQERQERW", review);
+					if(req.user._id) {
+						User.findById(req.user._id);
+					} 
+					//could add guest user account to redirect reviews without a logged-in user
+			})
+
+	});
+
 	Product.findOne({ name: shoeName }, function (err, product) {
 
 		
-		Review.create({ body: addedReview.body }, function(err, review){
+		Review.create({ title: addedReview.title, score: addedReview.score, body: addedReview.body }, function(err, review){
 
 			product.reviews.push(review);
 			product.save();
