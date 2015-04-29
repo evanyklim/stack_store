@@ -54,7 +54,6 @@ navbar {
     font-size: 40px;
     padding-top: 20px;
     font-family: 'Shadows Into Light', cursive;
-    color: red;
   }
   .navbar-nav {
         padding-top: 8px;
@@ -67,6 +66,8 @@ navbar {
   }
   .nav > li > a {
     font-size: 18px; }
+      .nav > li > a:link {
+    color: #ffffff; }
   .nav > li > a.active {
       color: #ffffff; }
   .nav > li > a:focus {
@@ -92,3 +93,28 @@ navbar {
   }
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: orange;
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.alert-success {
+  position: absolute;
+  top: 42px;
+  left: 15px;
+  width: 250px;
+}
