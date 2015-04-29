@@ -55,8 +55,10 @@
 				<p>{{ product.name }}</p>
 				<blockquote ng-repeat="review in product.reviews">
 					<p><b>Review Title:</b> {{ review.title }}</p>
+					<b>Date:</b> {{ review.date | date:'medium' }}</p>
 					<b>Stars:</b> {{ review.score }}</p>
 					<p><b>Review:</b> {{ review.body }}</p>
+
 					
 					<cite><p><b>by:</b> {{ review.user.nickname }}</p></cite>
 				</blockquote>
@@ -67,7 +69,6 @@
 							<p><b>Title of Review:</b> {{ review.title }}</p>
 							<p><b>Your Star Rating:</b> {{ review.score }}</p>
 							<p><b>Your Review:</b> {{ review.body }}</p>
-							<cite><b>by:</b> {{ review.author }}</cite>
 						</blockquote>
 					<div class="form-group">
 						<label for="reviewTitle">Title of Your Review</label>
@@ -86,11 +87,6 @@
 					<div class="form-group">
 						<label for="reviewForm">Enter Your Review</label>
 						<textarea id="reviewForm" class="form-control" rows="5" ng-model="review.body" required></textarea>
-					</div>
-					<div class="form-group">
-						<label for="reviewAuthor">by:</label>
-						<input id="reviewAuthor" class="form-control" ng-model="review.author" type="email" required />
-						<div>reviewForm is {{reviewForm.$valid}}</div>
 					</div>
 					<input type="submit" class="btn btn-success" value="Submit Review" />
 				</form>

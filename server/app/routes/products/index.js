@@ -12,8 +12,6 @@ router.get('/shoes', function (req, res) {
 
 	Product.find({}).deepPopulate('reviews.user').exec(function(err, products){
 		res.json(products);		
-		console.log(products);
-
 	});
 });
 
@@ -26,39 +24,24 @@ router.post('/shoes', function(req, res){
 
 router.post('/shoes/reviews', function (req, res){
 
-	console.log(req.user);
-
 	var shoeName = req.body.name;
 	var addedReview = req.body.reviews[req.body.reviews.length-1];
+	var user = req.user;
 
-
-
-	Product.findOne({ name: shoeName })
-		.populate('reviews').exec(function (err, product){
-		
-			Review.create({ title: addedReview.title, score: addedReview.score, body: addedReview.body })
-				.populate('user').exec(function (err, review){
-					console.log("REVERQERQERW", review);
-					if(req.user._id) {
-						User.findById(req.user._id);
-					} 
-					//could add guest user account to redirect reviews without a logged-in user
-			})
-
-	});
 
 	Product.findOne({ name: shoeName }, function (err, product) {
 
 		
-		Review.create({ title: addedReview.title, score: addedReview.score, body: addedReview.body }, function(err, review){
-
-			product.reviews.push(review);
-			product.save();
-
+		Review.create({ title: addedReview.title, score: addedReview.score, body: addedReview.body }, function (err, review){
+			if(req.user) { review.user = user }
+			review.save(function (err, savedReview){
+				product.reviews.push(review)
+				product.save(function (err, savedProduct) {
+					Product.findById(savedProduct._id).deepPopulate('reviews.user').exec(function(err, product){
+						res.json(product);		
+					});
+				});
+			})
 		});
-		//product.Reviews.push(addedReview);
-		//product.save();
-		res.json(product);
 	});
-
 });
