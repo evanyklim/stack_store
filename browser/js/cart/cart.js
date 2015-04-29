@@ -35,12 +35,6 @@ app.controller('CartController', function ($scope, CartFactory) {
               $scope.itemsCounter = $scope.itemsCounter + 1;
                     item.added = true;
 
-<<<<<<< HEAD
-=======
-          //$scope.itemsCounter = $scope.itemsCounter + 1;
-          item.added = true;
->>>>>>> master
-
       });
   };
 
